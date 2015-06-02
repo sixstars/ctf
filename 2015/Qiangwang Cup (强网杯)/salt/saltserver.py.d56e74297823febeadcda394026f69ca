@@ -1,0 +1,104 @@
+#!/usr/bin/env python
+
+import random, string, re, urlparse
+from hashlib import sha1
+import SocketServer,threading,os
+
+try:
+  from flag import FLAG
+except:
+  FLAG = 'flag{test-flag}'
+
+urlre = re.compile('^/login\?username=.+&password=.+$')
+passwordre = re.compile('^[-_a-z0-9]{6,20}$', re.I)
+
+def ask(s, msg = ''):
+  if msg:
+    s.send(msg)
+  try:
+    return s.recv(10).lower()[0] in ('y', '\n')
+  except:
+    return False
+
+class threadedserver(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
+  pass
+
+class incoming(SocketServer.BaseRequestHandler):
+  def handle(self):
+    cur_thread = threading.current_thread()
+    self.request.settimeout(120)
+    self.request.send('Here is a login system using sha1(salt + password) to protect your safety.\nHow many password/hash pair do you need to crack the salt?\n')
+    salt = ''.join([random.choice(string.printable[:62]) for x in range(16)])
+
+    seen = set()
+
+    while True:
+      if not ask(self.request, msg = "Register Account?[Y/n] "):
+        break
+
+      self.request.send("Your username: ")
+      username = self.request.recv(1024).strip()
+
+      if not username or username == 'admin':
+        self.request.send('invalid username')
+        return
+
+      self.request.send("Your password: ")
+      password = self.request.recv(1024).strip()
+
+      if not password:
+        self.request.send('invalid password')
+        return
+
+      url = '/login?username=' + username + '&password=' + password
+
+      if url in seen:
+        self.request.send('duplicate password\n')
+        return
+
+      seen.add(url)
+
+      sr = sha1(salt + url)
+      srx = [x for x in sr.hexdigest()]
+    
+      rans = set()
+
+      while len(rans) < 7:
+        rans.add(random.randint(0, len(srx)-1))
+
+      for i in rans:
+        srx[i] = 'x'
+
+      self.request.send('%s\n' % ''.join(srx))
+
+    r = random.randint(0, 1)
+    correct = False
+    if r == 0:
+      self.request.send('Question1: Tell me the salt: ')
+      if self.request.recv(1024) == salt:
+        correct = True
+    elif r == 1:
+      self.request.send('Question2: Now try to cheat the login system.\nSend login url: ')
+      url = self.request.recv(1024)
+      if not url: return
+      self.request.send('Signature: ')
+      sig = self.request.recv(1024).strip()
+      if not sig: return
+      urlparsed = urlparse.urlparse(url)
+      account = dict((k, v) for k, v in urlparse.parse_qsl(urlparsed.query))
+      if sha1(salt + url).hexdigest() == sig and urlre.match(url) and account.get('username') == 'admin' and passwordre.match(account.get('password', '')) and len(account) == 2 and urlparsed.path == '/login':
+        correct = True
+
+    if correct:
+      self.request.send('Congratulations, flag is %s\n' % FLAG)
+    else:
+      self.request.send('Incorrect answer, bye\n')
+
+SocketServer.TCPServer.allow_reuse_address = True
+server = threadedserver(("0.0.0.0", 4444), incoming)
+server.timeout = 120
+server_thread = threading.Thread(target=server.serve_forever)
+server_thread.daemon = False
+server_thread.start()
+
+# vim: set et ai ts=2 sw=2 sts=2:
