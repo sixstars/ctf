@@ -19,5 +19,4 @@ tmp_bin = './tmp.bin'
 if os.path.exists(tmp_bin):
     os.remove(tmp_bin)
 os.symlink(os.path.abspath(args.binary), tmp_bin)
-# Add argv2 to keep the stack unchanged.
-os.execve(args.binary, [tmp_bin, args.hex_str.decode('hex'), NOPS(0xff - len(args.binary))], {})
+os.execve(tmp_bin, [tmp_bin, args.hex_str.decode('hex')], {})
