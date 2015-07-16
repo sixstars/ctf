@@ -8,7 +8,7 @@ __pycache__/
 *.py[cod]
 
 # C extensions
-*.so
+# *.so # allow .so because of libc.so
 
 # Distribution / packaging
 .Python
