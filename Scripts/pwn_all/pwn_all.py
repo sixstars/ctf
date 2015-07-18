@@ -49,8 +49,9 @@ def pwn(config):
     os.chdir(config['name'])
     log('out.log', 'PWN start')
     for i in config['ids']:
-        # status, output = run_with_retry('timeout %d ./attack.py ID=%d' % (config['timeout'], i))
-        status, flag = run_with_retry('gtimeout %d ./attack.py ID=%d' % (config['timeout'], i))
+        cmd = config['cmd'].format(id=i)
+        # status, flag = run_with_retry('timeout %d %s' % (config['timeout'], cmd))
+        status, flag = run_with_retry('gtimeout %d %s' % (config['timeout'], cmd))
         if status == 0:
             result = submit_with_retry(flag)
             if result is True:
