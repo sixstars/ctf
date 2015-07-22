@@ -32,6 +32,7 @@ def debug(args, shell=False, executable=None, cwd=None, env=None, timeout=pwnlib
         args = [args]
     args = ['gdb'] + args
     io = process(args, shell, executable, cwd, env, timeout)
+    io.debug_mode = True
     io.sendline('set prompt {0} '.format(term.text.bold_red('gdb$')))
     return io
 
@@ -47,8 +48,8 @@ def gdb_run(self):
 def gdb_continue(self):
     self.sendline('c')
 
-def ext_interactive(self, prompt = ''):
-    """interactive(prompt = '')
+def ext_interactive(self, prompt = term.text.bold_red('$') + ' '):
+    """interactive(prompt = pwnlib.term.text.bold_red('$') + ' ')
     Does simultaneous reading and writing to the tube. In principle this just
     connects the tube to standard in and standard out, but in practice this
     is much more usable, since we are using :mod:`pwnlib.term` to print a
@@ -82,7 +83,10 @@ def ext_interactive(self, prompt = ''):
     try:
         while not go.isSet():
             if term.term_mode:
-                data = term.readline.readline(prompt = prompt, float = True)
+                if self.debug_mode:
+                    data = term.readline.readline(prompt = '', float = True)
+                else:
+                    data = term.readline.readline(prompt = prompt, float = True)
             else:
                 data = sys.stdin.readline()
 
@@ -110,6 +114,7 @@ def ext_interactive(self, prompt = ''):
 
     signal.signal(signal.SIGINT, old_handler)
 
+pwnlib.tubes.tube.tube.debug_mode = False
 pwnlib.tubes.tube.tube.b = gdb_break
 pwnlib.tubes.tube.tube.r = gdb_run
 pwnlib.tubes.tube.tube.c = gdb_continue
