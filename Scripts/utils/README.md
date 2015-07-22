@@ -27,12 +27,14 @@
 	>>> io.r() # <=> io.sendline('r')
 	>>> io.ext_interactive()
 	[*] Switching to extensive interactive mode	GNU gdb (GDB) 7.9	...
-	Reading symbols from cat...(no debugging symbols found)...done.	gdb-peda$ gdb$ Starting program: /bin/cat 	0\x30\t\x41A	00	AA
+	Reading symbols from cat...(no debugging symbols found)...done.
+	gdb-peda$ gdb$ Starting program: /bin/cat 	0\x30\t\x41A	00	AA
 	### Pressed ctrl+c here in order to interrupt the running program ###
 	Program received signal SIGINT, Interrupt.
 	...
 	Stopped reason: SIGINT	0x00007ffff7b003a0 in read () from /lib/x86_64-linux-gnu/libc.so.6
 	gdb$ i prog		Using the running image of child process 6695.	Program stopped at 0x7ffff7b003a0.	It stopped with signal SIGINT, Interrupt.	Type "info stack" or "info registers" for more information.
-	gdb$ c
+	gdb$ c!
+	### input c! <=> exit interactive mode and run io.c() ###
 	Continuing.
-	### input c! <=> exit interactive mode and run io.c() ###	```
+	>>> io.sendline('A\x410\x30')	>>> io.recvline(False)	'AA00'	```
