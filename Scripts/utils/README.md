@@ -28,7 +28,7 @@
 	>>> io.ext_interactive()
 	[*] Switching to extensive interactive mode	GNU gdb (GDB) 7.9	...
 	Reading symbols from cat...(no debugging symbols found)...done.
-	gdb-peda$ gdb$ Starting program: /bin/cat 	0\x30\t\x41A	00	AA
+	gdb-peda$ gdb$ Starting program: /bin/cat 	0\x30\t\x41A	00	AA
 	### Pressed ctrl+c here in order to interrupt the running program ###
 	Program received signal SIGINT, Interrupt.
 	...
