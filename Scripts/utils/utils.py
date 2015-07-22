@@ -8,6 +8,7 @@ from pwn import *
 
 __all__ = ['SET_PAD_CHAR', 'NOPS', 'LEFT_PAD', 'RIGHT_PAD', 'debug']
 
+
 pad_char = '\x90'
 
 def SET_PAD_CHAR(c):
@@ -25,6 +26,7 @@ def RIGHT_PAD(s, n):
     assert len(s) <= n
     return s + NOPS(n - len(s))
 
+
 def debug(args, shell=False, executable=None, cwd=None, env=None, timeout=pwnlib.timeout.Timeout.default):
     if type(args) == str:
         args = [args]
@@ -32,6 +34,18 @@ def debug(args, shell=False, executable=None, cwd=None, env=None, timeout=pwnlib
     io = process(args, shell, executable, cwd, env, timeout)
     io.sendline('set prompt {0} '.format(term.text.bold_red('gdb$')))
     return io
+
+def gdb_break(self, addr):
+    if type(addr) == int or type(addr) == long:
+        self.sendline('b *0x{0:x}'.format(addr))
+    else:
+        self.sendline('b {0}'.format(addr))
+
+def gdb_run(self):
+    self.sendline('r')
+
+def gdb_continue(self):
+    self.sendline('c')
 
 def ext_interactive(self, prompt = ''):
     """interactive(prompt = '')
@@ -96,4 +110,7 @@ def ext_interactive(self, prompt = ''):
 
     signal.signal(signal.SIGINT, old_handler)
 
+pwnlib.tubes.tube.tube.b = gdb_break
+pwnlib.tubes.tube.tube.r = gdb_run
+pwnlib.tubes.tube.tube.c = gdb_continue
 pwnlib.tubes.tube.tube.ext_interactive = ext_interactive
