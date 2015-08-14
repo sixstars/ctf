@@ -6,8 +6,48 @@ import signal
 
 from pwn import *
 
-__all__ = ['SET_PAD_CHAR', 'NOPS', 'LEFT_PAD', 'RIGHT_PAD', 'debug']
+__all__ = [
+'factor', 'gcd', 'ext_euclid',
+'SET_PAD_CHAR', 'NOPS', 'LEFT_PAD', 'RIGHT_PAD',
+'debug'
+]
 
+
+#############################
+### utils for calculation ###
+#############################
+
+def factor(n):
+    """分解质因数"""
+    while (2 < n) and (n & 1 == 0):
+        n >>= 1
+        print '2 * ',
+    i = 3
+    while i < n:
+        if n % i == 0:
+            n /= i
+            print '%d *' % i,
+            continue
+        i += 2
+    print n
+
+def gcd(a, b):
+    """最大公约数，a > b"""
+    if b == 1:
+        return a
+    return gcd(b, a % b)
+
+def ext_euclid(a, b):
+    """扩展的欧几里德，a > b，ax+by=GCD(a, b) => x,y"""
+    if a % b == 0:
+        return 0, 1
+    x, y = ext_euclid(b, a % b)
+    return y, x - a / b * y
+
+
+#############################
+### utils for EXP writing ###
+#############################
 
 pad_char = '\x90'
 
@@ -26,6 +66,10 @@ def RIGHT_PAD(s, n):
     assert len(s) <= n
     return s + NOPS(n - len(s))
 
+
+#######################
+### utils for debug ###
+#######################
 
 def debug(args, shell=False, executable=None, cwd=None, env=None, timeout=pwnlib.timeout.Timeout.default):
     if type(args) == str:
