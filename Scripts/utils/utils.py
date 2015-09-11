@@ -4,13 +4,14 @@
 import os
 import signal
 
+import pwn
 from pwn import *
 
 __all__ = [
 'factor', 'gcd', 'ext_euclid',
-'SET_PAD_CHAR', 'NOPS', 'LEFT_PAD', 'RIGHT_PAD',
-'debug'
-]
+'set_pad_char', 'nops', 'left_pad', 'right_pad',
+'debug',
+] + [i for i in dir(pwn) if not i.startswith('__')] # export all imported from pwn
 
 
 #############################
@@ -49,22 +50,22 @@ def ext_euclid(a, b):
 ### utils for EXP writing ###
 #############################
 
-pad_char = '\x90'
+_pad_char = '\x90'
 
-def SET_PAD_CHAR(c):
-    global pad_char
-    pad_char = c
+def set_pad_char(c):
+    global _pad_char
+    _pad_char = c
 
-def NOPS(n):
-    return pad_char * n
+def nops(n):
+    return _pad_char * n
 
-def LEFT_PAD(s, n):
+def left_pad(s, n):
     assert len(s) <= n
-    return NOPS(n - len(s)) + s
+    return nops(n - len(s)) + s
 
-def RIGHT_PAD(s, n):
+def right_pad(s, n):
     assert len(s) <= n
-    return s + NOPS(n - len(s))
+    return s + nops(n - len(s))
 
 
 #######################
@@ -80,19 +81,19 @@ def debug(args, shell=False, executable=None, cwd=None, env=None, timeout=pwnlib
     io.sendline('set prompt {0} '.format(term.text.bold_red('gdb$')))
     return io
 
-def gdb_break(self, addr):
+def _gdb_break(self, addr):
     if type(addr) == int or type(addr) == long:
         self.sendline('b *0x{0:x}'.format(addr))
     else:
         self.sendline('b {0}'.format(addr))
 
-def gdb_run(self):
+def _gdb_run(self):
     self.sendline('r')
 
-def gdb_continue(self):
+def _gdb_continue(self):
     self.sendline('c')
 
-def ext_interactive(self, prompt = term.text.bold_red('$') + ' '):
+def _ext_interactive(self, prompt = term.text.bold_red('$') + ' '):
     """interactive(prompt = pwnlib.term.text.bold_red('$') + ' ')
     Does simultaneous reading and writing to the tube. In principle this just
     connects the tube to standard in and standard out, but in practice this
@@ -159,7 +160,7 @@ def ext_interactive(self, prompt = term.text.bold_red('$') + ' '):
     signal.signal(signal.SIGINT, old_handler)
 
 pwnlib.tubes.tube.tube.debug_mode = False
-pwnlib.tubes.tube.tube.b = gdb_break
-pwnlib.tubes.tube.tube.r = gdb_run
-pwnlib.tubes.tube.tube.c = gdb_continue
-pwnlib.tubes.tube.tube.ext_interactive = ext_interactive
+pwnlib.tubes.tube.tube.b = _gdb_break
+pwnlib.tubes.tube.tube.r = _gdb_run
+pwnlib.tubes.tube.tube.c = _gdb_continue
+pwnlib.tubes.tube.tube.ext_interactive = _ext_interactive
