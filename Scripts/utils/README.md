@@ -2,12 +2,12 @@
 
 ## Install
 
-由于只是个人小工具，没有提供`pip install`，可以在python启动脚本中加入下面命令将本程序加入搜索路径，从而实现全局任何地方`import`：
+由于只是个人小工具，没有提供`pip install`，可以添加环境变量，将本程序加入python模块搜索路径，从而实现全局任何地方`import`。
 
-```python
-import sys
-sys.path.insert(0, '/path/to/directory/of/utils')
-del sys
+具体可在`.bashrc/.zshrc`中加入下面命令，：
+
+```bash
+export PYTHONPATH="/path/to/directory/of/utils:$PYTHONPATH"
 ```
 
 ## Usage
