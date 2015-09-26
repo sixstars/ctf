@@ -28,7 +28,7 @@ def unhex(s):
 
 
 def factor(n):
-    """分解质因数"""
+    """Integer factorization (Prime decomposition)."""
     while (2 < n) and (n & 1 == 0):
         n >>= 1
         print '2 * ',
@@ -43,14 +43,14 @@ def factor(n):
 
 
 def gcd(a, b):
-    """最大公约数，a > b"""
-    if b == 1:
+    """Calculate greatest common divisor."""
+    if b == 0:
         return a
     return gcd(b, a % b)
 
 
 def ext_euclid(a, b):
-    """扩展的欧几里德，a > b，ax+by=GCD(a, b) => x,y"""
+    """Extented Euclidean algorithm. a > b, ax+by=GCD(a, b) => x,y"""
     if a % b == 0:
         return 0, 1
     x, y = ext_euclid(b, a % b)
@@ -76,7 +76,7 @@ def rsa_decrypt(c, e, p, q):
 ### utils for EXP writing ###
 #############################
 
-_pad_char = '\x90'
+_pad_char = 'A'
 
 
 def set_pad_char(c):
