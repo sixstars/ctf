@@ -11,7 +11,10 @@ __all__ = [
     'factor', 'gcd', 'ext_euclid',
     'set_pad_char', 'nops', 'left_pad', 'right_pad',
     'debug',
-] + [i for i in dir(pwn) if not i.startswith('__')]  # export all imported from pwn
+]
+
+# export all imported from pwn
+__all__ += [i for i in dir(pwn) if not i.startswith('__')]
 
 
 #############################
@@ -19,7 +22,7 @@ __all__ = [
 #############################
 
 def unhex(s):
-    """
+    """Hex decode strings.
     Override unhex in pwntools.
     Hex-strings with odd length are acceptable.
     """
