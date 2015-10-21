@@ -8,8 +8,8 @@ import pwn
 from pwn import *
 
 __all__ = [
-    'factor', 'gcd', 'ext_euclid',
-    'set_pad_char', 'nops', 'left_pad', 'right_pad',
+    'factor', 'gcd', 'ext_euclid', 'rsa_decrypt',
+    'ljust', 'rjust',
     'debug',
 ]
 
@@ -79,29 +79,20 @@ def rsa_decrypt(c, e, p, q):
 ### utils for EXP writing ###
 #############################
 
-_pad_char = 'A'
-
-
-def set_pad_char(c):
-    global _pad_char
-    _pad_char = c
-
-
-def nops(n, c=None):
+def ljust(s, n, c=None):
+    assert len(s) <= n
     if c is None:
-        return _pad_char * n
+        return s + cyclic(n - len(s))
     else:
-        return c * n
+        return s.ljust(n, c)
 
 
-def left_pad(s, n, c=None):
+def rjust(s, n, c=None):
     assert len(s) <= n
-    return nops(n - len(s), c) + s
-
-
-def right_pad(s, n, c=None):
-    assert len(s) <= n
-    return s + nops(n - len(s), c)
+    if c is None:
+        return cyclic(n - len(s)) + s
+    else:
+        return s.rjust(n, c)
 
 
 #######################
