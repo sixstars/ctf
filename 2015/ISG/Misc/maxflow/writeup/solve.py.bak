@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+# encoding:utf-8
+
+import maxflow
+
+from utils import *
+
+# context.log_level = 'debug'
+
+io = remote('202.120.7.131', 9999)
+
+io.recvuntil('Problem')
+io.recvline()
+
+edges = []
+while True:
+    if io.recv(2) != 'w[':
+        break
+    u = io.recvuntil('][', True)
+    v = io.recvuntil('] = ', True)
+    w = float(io.recvline(False))
+    edges.append((u, v, w))
+io.recvuntil(':')
+
+# edges = [['S', '1', 2.5],
+# ['S', '2', 2.5],
+# ['1', 'T', 2.5],
+# ['3', 'T', 2.5],
+# ['2', '1', 1.25],
+# ['1', '3', 1.25],
+# ['2', '3', 1.25],
+# ['S', 'T', 3]]
+
+nodes = map(lambda e: e[0], edges) + map(lambda e: e[1], edges)
+nodes = filter(lambda x: x != 'S' and x != 'T', nodes)
+max_node = max(map(lambda x: int(x), nodes))
+node_count = max_node + 1
+
+graph = maxflow.Graph[float]()
+nodes = graph.add_nodes(node_count)
+ws = [0] * node_count
+wt = [0] * node_count
+
+for u, v, w in edges:
+    if u == 'S' or v == 'S':
+        if u == 'T' or v == 'T':
+            graph.add_tedge(0, w, w)
+            continue
+        ws[int((u + v).strip('S'))] = w
+        continue
+    if u == 'T' or v == 'T':
+        wt[int((u + v).strip('T'))] = w
+        continue
+    graph.add_edge(int(u), int(v), w, w)
+
+for i in xrange(1, node_count):
+    graph.add_tedge(i, ws[i], wt[i])
+
+io.sendline(str(graph.maxflow()))
+print edges, graph.maxflow()
+
+io.ext_interactive()
