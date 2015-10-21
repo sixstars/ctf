@@ -53,7 +53,7 @@ def gcd(a, b):
 
 
 def ext_euclid(a, b):
-    """Extented Euclidean algorithm. a > b, ax+by=GCD(a, b) => x,y"""
+    """Extended Euclidean algorithm. a > b, ax+by=GCD(a, b) => x,y"""
     if a % b == 0:
         return 0, 1
     x, y = ext_euclid(b, a % b)
@@ -87,18 +87,21 @@ def set_pad_char(c):
     _pad_char = c
 
 
-def nops(n):
-    return _pad_char * n
+def nops(n, c=None):
+    if c is None:
+        return _pad_char * n
+    else:
+        return c * n
 
 
-def left_pad(s, n):
+def left_pad(s, n, c=None):
     assert len(s) <= n
-    return nops(n - len(s)) + s
+    return nops(n - len(s), c) + s
 
 
-def right_pad(s, n):
+def right_pad(s, n, c=None):
     assert len(s) <= n
-    return s + nops(n - len(s))
+    return s + nops(n - len(s), c)
 
 
 #######################
@@ -130,6 +133,11 @@ def _gdb_continue(self):
     self.sendline('c')
 
 
+def _gdb_interrupt(self):
+    for child in proc.children(proc.pidof(self)[0]):
+        os.kill(child, signal.SIGINT)
+
+
 def _ext_interactive(self, prompt=term.text.bold_red('$') + ' '):
     """interactive(prompt = pwnlib.term.text.bold_red('$') + ' ')
     Does simultaneous reading and writing to the tube. In principle this just
@@ -140,7 +148,7 @@ def _ext_interactive(self, prompt=term.text.bold_red('$') + ' '):
     """
 
     def handler(signum, frame):
-        os.kill(proc.children(proc.pidof(self)[0])[0], signal.SIGINT)
+        self.interrupt()
 
     old_handler = signal.signal(signal.SIGINT, handler)
 
@@ -198,8 +206,29 @@ def _ext_interactive(self, prompt=term.text.bold_red('$') + ' '):
 
     signal.signal(signal.SIGINT, old_handler)
 
+
+def _send(self, data):
+    self._send(str(data))
+
+
+def _sendline(self, data):
+    self._sendline(str(data))
+
+
+def _sendlines(self, data):
+    for row in data:
+        self.sendline(row)
+
+
 pwnlib.tubes.tube.tube.debug_mode = False
 pwnlib.tubes.tube.tube.b = _gdb_break
 pwnlib.tubes.tube.tube.r = _gdb_run
 pwnlib.tubes.tube.tube.c = _gdb_continue
+pwnlib.tubes.tube.tube.interrupt = _gdb_interrupt
+
+pwnlib.tubes.tube.tube._send = pwnlib.tubes.tube.tube.send
+pwnlib.tubes.tube.tube.send = _send
+pwnlib.tubes.tube.tube._sendline = pwnlib.tubes.tube.tube.sendline
+pwnlib.tubes.tube.tube.sendline = _sendline
+pwnlib.tubes.tube.tube.sendlines = _sendlines
 pwnlib.tubes.tube.tube.ext_interactive = _ext_interactive
