@@ -29,6 +29,8 @@ Then you can update this tool by simply executing `git pull`.
 
 1. Add some extra functions / methods for exp writing:
 
+    * ljust / rjust: similar to str.ljust / str.rjust, but with length check
+
     * tube.sendlines: send multiple lines in one command
 
     * debug: run gdb for debugging
