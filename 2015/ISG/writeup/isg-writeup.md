@@ -9,8 +9,16 @@
 > Hint1: 二维码 二维码 二维码!
 > Hint2: 躲猫猫 躲猫猫 躲猫猫!
 
+![](./duomaomao.png)
+
 扫出来一大段文字，将文字重新生成二维码。
+
+![](./duomaomao-generate.png)
+
 只有一块地方是不一样的，截下来
+
+![](./duomaomao-data-matrix.png)
+
 明显的datamatrix, 手机zxing一扫出flag
 
 ### maxflow (300)
