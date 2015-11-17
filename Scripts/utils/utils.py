@@ -2,7 +2,9 @@
 # encoding:utf-8
 
 import os
+import gzip
 import signal
+import StringIO
 
 import pwn
 from pwn import *
@@ -20,15 +22,6 @@ __all__ += [i for i in dir(pwn) if not i.startswith('__')]
 #############################
 ### utils for calculation ###
 #############################
-
-def unhex(s):
-    """Hex decode strings.
-    Override unhex in pwntools.
-    Hex-strings with odd length are acceptable.
-    """
-    s = str(s).strip()
-    return (len(s) % 2 and '0' + s or s).decode('hex')
-
 
 def factor(n):
     """Integer factorization (Prime decomposition)."""
@@ -79,6 +72,15 @@ def rsa_decrypt(c, e, p, q):
 ### utils for EXP writing ###
 #############################
 
+def unhex(s):
+    """Hex decode strings.
+    Override unhex in pwntools.
+    Hex-strings with odd length are acceptable.
+    """
+    s = str(s).strip()
+    return (len(s) % 2 and '0' + s or s).decode('hex')
+
+
 def ljust(s, n, c=None):
     assert len(s) <= n
     if c is None:
@@ -93,6 +95,19 @@ def rjust(s, n, c=None):
         return cyclic(n - len(s)) + s
     else:
         return s.rjust(n, c)
+
+
+def gzip_decompress(s):
+    return gzip.GzipFile(fileobj=StringIO.StringIO(s)).read()
+
+
+def gzip_compress(s, compresslevel=9):
+    io = StringIO.StringIO()
+    gp = gzip.GzipFile(mode='w', compresslevel=compresslevel, fileobj=io)
+    gp.write(s)
+    gp.close()
+    io.seek(0)
+    return io.read()
 
 
 #######################
