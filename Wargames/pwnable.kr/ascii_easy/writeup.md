@@ -1,0 +1,1 @@
+ulimit -s unlimited
