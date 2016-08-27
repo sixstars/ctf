@@ -21,3 +21,5 @@ for ss in itertools.product('0123456789abcdefghijklmnopqrstuvwxyz',repeat=4):
         print(hashi)
         print(a+b+c+d)
 ```
+
+p.s. 一开始没有确认是md5，所以是把导出的elf中strcmp函数改成puts，然后不断执行该程序获得hash结果
