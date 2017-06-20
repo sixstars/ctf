@@ -1,0 +1,31 @@
+body {
+  width: 700px;
+  margin: auto;
+  font-size: 24px;
+}
+
+textarea {
+  width: 100%;
+  height: 10em;
+  font-family: monospace;
+  font-size: inherit;
+}
+
+#input_form {
+  position: relative;
+  text-align: center;
+}
+
+button#submit {
+  position: absolute;
+  right: 0;
+  margin-top: 1em;
+}
+
+button#render {
+  margin-top: 1em;
+}
+
+h2 {
+  text-align: center;
+}
