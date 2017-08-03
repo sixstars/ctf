@@ -1,0 +1,1 @@
+void doit(uint32_t newcrc);
