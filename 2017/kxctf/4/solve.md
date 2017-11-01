@@ -2,14 +2,14 @@
 
 一道考察unlink利用的题目，但开了PIE，引出第二个考点[glibc rand(3)预测攻击](http://inaz2.hatenablog.com/entry/2016/03/07/194000)。
 
-# 程序功能
+# 逆向分析
 
-有5次malloc的机会，大小递增，只有2、3两个可以free，并且free和write、show都是任意的，全局变量中有指向堆的指针。
+有5次malloc的机会，大小递增，只有2、3两个可以`destroy`，也就是free，并且free和write、show都是任意的，全局变量中有指向堆的指针。然后，`write_msg`存在溢出，设计好malloc的size大小，就可以溢出一个byte覆盖到下一个chunk的`size`部分。
 
 # 构思
-造出small bin，free就可以泄漏libc，然后很容易想到用unlink去做，并且这里有很方便的atoi，改为system即可。但是本题有PIE，于是要想办法leak出程序的信息。
+造出`small bin`，free就可以泄漏`libc`，然后很容易想到用unlink去做，并且这里有很方便的atoi，改为system即可getshell。但是本题有PIE，于是思考是否可能leak出程序的信息。
 
-仔细研究发现还有个奇葩的猜随机数功能，猜错给出当前随机数，根据glibc的rand实现可知，内部有31个状态，找到93次输出，用z3就可以解出所有的状态，并预测下一次。
+仔细研究发现还有个奇葩的猜随机数功能，猜错给出当前随机数，参考简介中提到的文章可知，内部有31个状态，找到93次输出，用z3就可以解出所有的状态，并预测下一次。
 
 预测成功就可以拿到seed的地址，这是一个`.bss`段的地址，根据偏移就可以推算出堆指针和got entry的地址，用unlink利用即可。
 
