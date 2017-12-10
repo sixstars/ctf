@@ -6,6 +6,8 @@
 
 以下内容来自 <https://hackmd.io/s/SykZ1Opkf>
 
+官方repo只有exp没有思路 所以另附一份这次第一名的Nu1L的Write up
+
 ## use your ida
 和看雪CTF第二题一样的思路，溢出跳到神秘代码段，然后尝试用ponce解了一下，发现可行，于是掏出angr就是干。
 
