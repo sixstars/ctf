@@ -6,7 +6,7 @@
 
 要了解侧信道攻击，推荐这篇文章 <https://servers.ustclug.org/2014/05/fix-freeshell-side-channel-attach/>
 
-用ncat启pin，返回指令数目，用pwntools负责攻击，经过简单的几次尝试可以发现每正确一位，指令数目-1。
+用ncat起pin返回指令数目，用pwntools负责攻击，经过简单的几次尝试可以发现每正确一位，指令数目-1。
 
 那么脚本如下：
 
