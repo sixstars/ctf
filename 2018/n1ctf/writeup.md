@@ -203,3 +203,15 @@ for i in range(len(a1)):
 翻到图片低比特位里的加密zip包以及图中YSL符号，找个比较精准的色跟号颜色比对页面，把图片中色号拼出来后比特数刚好为8的倍数，然而为非ascii字符，尝试用utf8编码显示。
 
 前面都是队友弄的，然后我发现出来的这段东西跟“白学家”只差一个bit，猜测是色号对比误差然后试了一下密码就拿到flag了
+
+
+### vote
+菜单题  
+一开始看起来比较复杂，在vote函数里还开了一个线程修改了一个全局变量，本来想着需要用到竞争的方法来绕过cancel函数里的一些判断，但后来发现不需要vote也能做。cancel函数里有一个double free的漏洞，并且在show函数里也不检查空间是否被free。
+
+- 先通过申请unsort bin再free，通过show拿到libc的偏移地址。  
+- 申请两个相邻大小的堆块A和B，然后free掉触发合并。  
+- 再申请A+B大小的堆块，就可以覆写A,B里面的内容，这时在B地址伪造成一个假的fast bin大小的堆块。  
+- 利用cancel的函数bug再次free B， B被放入fast bin arena中。  
+- free 掉第三步申请的A+B，再次申请A+B大小的堆块，并将B的fd指针指向malloc hook附近。
+- 申请两次B大小的堆块，将malloc hook改为gadget地址。  
