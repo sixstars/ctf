@@ -240,3 +240,62 @@ for i in range(len(a1)):
 - 利用cancel的函数bug再次free B， B被放入fast bin arena中。  
 - free 掉第三步申请的A+B，再次申请A+B大小的堆块，并将B的fd指针指向malloc hook附近。
 - 申请两次B大小的堆块，将malloc hook改为gadget地址。  
+
+### baby_neural_network
+ 
+题目是长为41的输入的ascii取倒数后经过5层41 cells全连接后，要求与给定的prediction相同。    
+由于激活函数sigmoid有反函数，那么每层全连接公式`sigmoid(x*w+b) = y`的逆向自然就是`x = (sigmoid^(-1)(y-b))*w^(-1)`。    
+只要无视掉c++的gc代码这题就十分简单，单纯一个线性代数逆向题。    
+
+```python
+import tensorflow as tf
+import numpy as np
+import math, random
+import string
+
+sess = tf.InteractiveSession()
+
+addr_offset = 0x282e960-0x2c2f960
+
+pred=0x2c39740
+w5=0x2c29020
+w4=0x2c2c4c0
+w3=0x2c2f960
+w2=w3+13472
+w1=w2+13472
+b5=0x2c398a0
+b4=0x2c39a00
+b3=b4+352
+b2=b3+352
+b1=b2+352
+
+to_load_352 = [b1,b2,b3,b4,b5,pred]
+to_load_352 = [i+addr_offset for i in to_load_352]
+to_load_13472 = [w1,w2,w3,w4,w5]
+to_load_13472 = [i+addr_offset for i in to_load_13472]
+
+with open('baby_neural_network', 'rb') as f:
+	data = f.read()
+	bias = [np.array(tf.reshape(tf.decode_raw(data[i:i+41*8], tf.float64), [1, 41]).eval(), dtype=np.float64) for i in to_load_352]
+	weights = [np.matrix(tf.reshape(tf.decode_raw(data[i:i+41*41*8], tf.float64), [41, 41]).eval(), dtype=np.float64) for i in to_load_13472]
+	pred = bias[-1]
+	bias = bias[:-1]
+	data = ''
+	
+def inv_sigmoid(y):
+	return np.log(y / (1-y))
+	
+def calc_inv(s):
+	for b, w in zip(bias, weights)[::-1]:
+		s = (inv_sigmoid(s)-b)*np.linalg.inv(w)
+	return 1/s
+	
+print ''.join([chr(int(round(i))) for i in np.squeeze(np.asarray(calc_inv(pred)))])
+```
+
+### 77777 2
+
+payload: `{'hi':'''+strcmp( substr( pw ,%s),%s)''' % (bin(len(sql)), bin(ord(sql[-1]))), 'flag':'0'}`
+waf过滤掉了某些字母，要用0bXXXXX绕过去，然后二分盲注即可
+
+吐槽这个flag长得十分难看，试了好久才发现注出来的小写就是flag........
