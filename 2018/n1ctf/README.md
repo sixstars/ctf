@@ -293,6 +293,10 @@ def calc_inv(s):
 print ''.join([chr(int(round(i))) for i in np.squeeze(np.asarray(calc_inv(pred)))])
 ```
 
+### 77777
+
+发现 waf 规则禁掉了 `=`,`%` 等符号，但可以使用 `password like '______'` 来尝试注入，那么开始注入 payload: `{'hi': ' password like "____"', flag: 2333 }` 来爆破密码长度，爆破长度为 15，然后用盲注爆破密码即可，可以根据 `flag` 修改是否成功来显示是否盲注成功，最后因为不确定大小写，尝试了全小写，过了......
+
 ### 77777 2
 
 payload: `{'hi':'''+strcmp( substr( pw ,%s),%s)''' % (bin(len(sql)), bin(ord(sql[-1]))), 'flag':'0'}`
