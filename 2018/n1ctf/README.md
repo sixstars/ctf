@@ -244,8 +244,8 @@ for i in range(len(a1)):
 ### baby_neural_network
  
 题目是长为41的输入的ascii取倒数后经过5层41 cells全连接后，要求与给定的prediction相同。    
-由于激活函数sigmoid有反函数，那么每层全连接公式`sigmoid(x*w+b) = y`的逆向自然就是`x = (sigmoid^(-1)(y-b))*w^(-1)`。    
-只要无视掉c++的gc代码这题就十分简单，单纯一个线性代数逆向题。    
+由于激活函数sigmoid有反函数，那么每层全连接公式`sigmoid(x*w+b) = y`的逆向自然就是`x = (sigmoid^(-1)(y)-b)*w^(-1)`。    
+只要无视掉c++的gc代码这题就十分简单，单纯一个线性代数逆向&查tf API题。
 
 ```python
 import tensorflow as tf
