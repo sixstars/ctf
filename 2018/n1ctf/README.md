@@ -303,3 +303,10 @@ payload: `{'hi':'''+strcmp( substr( pw ,%s),%s)''' % (bin(len(sql)), bin(ord(sql
 waf过滤掉了某些字母，要用0bXXXXX绕过去，然后二分盲注即可
 
 吐槽这个flag长得十分难看，试了好久才发现注出来的小写就是flag........
+
+### losetome
+
+按照提示，运行指定命令，将得到的stamp提交，开始黑白棋游戏。
+输掉比赛是一个特定的Anti-chess问题，在github上也有相应的work:https://github.com/sum2012/sum-gnu-anti-Reversi-lazarus-windows
+在答题过程中第一次成功是徒手解出，主要依照三个原则：1.前期尽量在中心区域落子；2.落子尽量与己方棋子相连；3.后期必在边缘落子时，优先在边缘中心格落子。
+依照上述方法，便可达成条件。
