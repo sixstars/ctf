@@ -1,3 +1,28 @@
+# N1CTF 2018 writeup 
+
+`******`
+
+### null
+只有malloc的程序，但是用了线程，漏洞是个明显的溢出。
+
+几个人脑袋都很僵硬，就想着触发malloc过程里的_int_free了，一场debug-driven pwning。
+
+### LFI
+luajit的逆向，实际是js写的东西，然后转换而来的。总之就是读取你的输入作为key，和一个明文进行AES，然后结果要和另外一个白盒AES的相同。于是就是从白盒AES过程中恢复key，类似于34c3ctf的fuckbox。
+
+逆向、搜索、然后参考niklasb的脚本，详细分析见`LFI/README.md`。
+
+### apfs
+这道题给了个dmg文件，请有Mac的同学挂载，发现有密码，然后密码在最后一行找到。打开发现是众多空文件，于是开始脑洞。
+
+脑洞1：新功能？开始搜，乱找找到了<https://arstechnica.com/gadgets/2017/02/testing-out-snapshots-in-apples-next-generation-apfs-file-system/>。猜测有snapshot，然后用了博主的小工具<https://github.com/ahl/apfs/>，发现在10.13上面权限不够，各种不好使。到了10.12也是如此，但是惊人的发现博主提到的官方隐藏神秘小工具`apfs_snapshot`只有10.12有。然后开始恢复snapshot，结果发现恢复完啥也没变。
+
+脑洞2：是不是文件元数据？把finder的所有列都开了，然而没有发现。
+
+根据提示，apfs的时间精度是ns，结合脑洞2，可以提出ns为单位的时间，见`apfs/t.go`和`apfs/get.py`。
+
+又有异或的说法，于是回到脑洞1，猜测恢复实际成功了，但外表看不出，因为变化的是mtime的小数点后几位。那么就分别提出两次的时间，做异或即可。具体操作见`apfs/README.md`。
+
 ### baby_N1ES
 
 加密过程和`round_add`都是可逆的，直接在源码文件中加入解密用代码如下：
@@ -200,7 +225,7 @@ for i in range(len(a1)):
 
 ### Lipstick
 
-翻到图片低比特位里的加密zip包以及图中YSL符号，找个比较精准的色跟号颜色比对页面，把图片中色号拼出来后比特数刚好为8的倍数，然而为非ascii字符，尝试用utf8编码显示。
+翻到图片低比特位里的加密zip包以及图中YSL符号，找个比较精准的色跟号颜色比对页面，把图片中色号拼出来后比特数刚好为8的倍数，然而为非ascii字符，开头3个字节看上去像BOM头，于是尝试用utf8编码显示。
 
 前面都是队友弄的，然后我发现出来的这段东西跟“白学家”只差一个bit，猜测是色号对比误差然后试了一下密码就拿到flag了
 
