@@ -15,7 +15,7 @@ luajit的逆向，实际是js写的东西，然后转换而来的。总之就是
 ### apfs
 这道题给了个dmg文件，请有Mac的同学挂载，发现有密码，然后密码在最后一行找到。打开发现是众多空文件，于是开始脑洞。
 
-脑洞1：新功能？开始搜，乱找找到了<https://arstechnica.com/gadgets/2017/02/testing-out-snapshots-in-apples-next-generation-apfs-file-system/>。猜测有snapshot，然后用了博主的小工具<https://github.com/ahl/apfs/>，发现在10.13上面权限不够，各种不好使。到了10.12也是如此，但是惊人的发现博主提到的官方隐藏神秘小工具`apfs_snapshot`只有10.12有。然后开始恢复snapshot，结果发现恢复完啥也没变。
+脑洞1：新功能？检查[新功能列表](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html#//apple_ref/doc/uid/TP40016999-CH5-DontLinkElementID_18)，感觉快照功能比较容易做手脚，`tmutil listlocalsnapshots` 检查一下发现果然有快照。开始搜，乱找找到了<https://arstechnica.com/gadgets/2017/02/testing-out-snapshots-in-apples-next-generation-apfs-file-system/>。猜测有snapshot，然后用了博主的小工具<https://github.com/ahl/apfs/>，发现在10.13上面权限不够，各种不好使。到了10.12也是如此，但是惊人的发现博主提到的官方隐藏神秘小工具`apfs_snapshot`只有10.12有。然后开始恢复snapshot，结果发现恢复完啥也没变。
 
 脑洞2：是不是文件元数据？把finder的所有列都开了，然而没有发现。
 
