@@ -7,6 +7,8 @@
 
 几个人脑袋都很僵硬，就想着触发malloc过程里的_int_free了，一场debug-driven pwning。
 
+实际上由于是线程堆，堆虽然与 libc 之间有 gap，但当初始分配的堆空间耗尽后，新 mmap 出来的空间在初始堆前面且两者之间没有 gap，而线程 arena 在初始堆空间的起始位置，故而可以在 overlap 后直接改写 arena，伪造一个 fastbin 到 bss 上的函数指针前面，改函数指针为 system plt 即可。
+
 ### LFI
 luajit的逆向，实际是js写的东西，然后转换而来的。总之就是读取你的输入作为key，和一个明文进行AES，然后结果要和另外一个白盒AES的相同。于是就是从白盒AES过程中恢复key，类似于34c3ctf的fuckbox。
 
