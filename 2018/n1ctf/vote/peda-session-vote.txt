@@ -1,0 +1,5 @@
+break *0x401142
+break *0x401120
+break *0x400D57
+break *0x400D91
+
