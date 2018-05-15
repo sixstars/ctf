@@ -1,0 +1,733 @@
+; Disassembled using luadec 2.2 rev: 895d923 for Lua 5.3 from https://github.com/viruscamp/luadec
+; Command line: -dis ../../53.luac 
+
+; Function:        0
+; Defined at line: 0
+; #Upvalues:       1
+; #Parameters:     0
+; Is_vararg:       1
+; Max Stack Size:  26
+
+    0 [-]: GETTABUP  R0 U0 K0     ; R0 := U0["require"]
+    1 [-]: GETTABUP  R1 U0 K1     ; R1 := U0["setmetatable"]
+    2 [-]: GETTABUP  R2 U0 K2     ; R2 := U0["string"]
+    3 [-]: GETTABLE  R2 R2 K3     ; R2 := R2["char"]
+    4 [-]: GETTABUP  R3 U0 K4     ; R3 := U0["table"]
+    5 [-]: GETTABLE  R3 R3 K5     ; R3 := R3["concat"]
+    6 [-]: LOADNIL   R4 2         ; R4 to R6 := nil
+    7 [-]: CLOSURE   R7 0         ; R7 := closure(Function #0_0)
+    8 [-]: SETTABUP  U0 K6 R7     ; U0["prexor"] := R7
+    9 [-]: GETTABUP  R7 U0 K7     ; R7 := U0["jit"]
+   10 [-]: TEST      R7 0         ; if R7 then goto 12 else goto 22
+   11 [-]: JMP       R0 10        ; PC += 10 (goto 22)
+   12 [-]: GETTABUP  R7 U0 K7     ; R7 := U0["jit"]
+   13 [-]: GETTABLE  R7 R7 K8     ; R7 := R7["version_num"]
+   14 [-]: LT        0 K9 R7      ; if 20000 < R7 then goto 16 else goto 22
+   15 [-]: JMP       R0 6         ; PC += 6 (goto 22)
+   16 [-]: LOADBOOL  R4 1 0       ; R4 := true
+   17 [-]: GETTABUP  R7 U0 K10    ; R7 := U0["bit"]
+   18 [-]: GETTABLE  R5 R7 K11    ; R5 := R7["bxor"]
+   19 [-]: GETTABUP  R7 U0 K10    ; R7 := U0["bit"]
+   20 [-]: GETTABLE  R6 R7 K12    ; R6 := R7["band"]
+   21 [-]: JMP       R0 16        ; PC += 16 (goto 38)
+   22 [-]: GETTABUP  R7 U0 K13    ; R7 := U0["_VERSION"]
+   23 [-]: EQ        0 R7 K14     ; if R7 == "Lua 5.2" then goto 25 else goto 30
+   24 [-]: JMP       R0 5         ; PC += 5 (goto 30)
+   25 [-]: GETTABUP  R7 U0 K15    ; R7 := U0["bit32"]
+   26 [-]: GETTABLE  R5 R7 K11    ; R5 := R7["bxor"]
+   27 [-]: GETTABUP  R7 U0 K15    ; R7 := U0["bit32"]
+   28 [-]: GETTABLE  R6 R7 K12    ; R6 := R7["band"]
+   29 [-]: JMP       R0 8         ; PC += 8 (goto 38)
+   30 [-]: MOVE      R7 R0        ; R7 := R0
+   31 [-]: LOADK     R8 K10       ; R8 := "bit"
+   32 [-]: CALL      R7 2 2       ; R7 := R7(R8)
+   33 [-]: SETTABUP  U0 K10 R7    ; U0["bit"] := R7
+   34 [-]: GETTABUP  R7 U0 K10    ; R7 := U0["bit"]
+   35 [-]: GETTABLE  R5 R7 K11    ; R5 := R7["bxor"]
+   36 [-]: GETTABUP  R7 U0 K10    ; R7 := U0["bit"]
+   37 [-]: GETTABLE  R6 R7 K12    ; R6 := R7["band"]
+   38 [-]: (null)                 ; 
+   39 [-]: LOADNIL   R7 1         ; R7 to R8 := nil
+   40 [-]: (null)                 ; 
+   41 [-]: TEST      R4 0         ; if R4 then goto 43 else goto 68
+   42 [-]: JMP       R0 25        ; PC += 25 (goto 68)
+   43 [-]: MOVE      R9 R0        ; R9 := R0
+   44 [-]: LOADK     R10 K16      ; R10 := "ffi"
+   45 [-]: CALL      R9 2 2       ; R9 := R9(R10)
+   46 [-]: GETTABLE  R10 R9 K17   ; R10 := R9["string"]
+   47 [-]: GETTABLE  R11 R9 K18   ; R11 := R9["copy"]
+   48 [-]: (null)                 ; 
+   49 [-]: GETTABLE  R12 R9 K19   ; R12 := R9["cdef"]
+   50 [-]: LOADK     R13 K20      ; R13 := "\t\ttypedef struct { uint8_t v; } idx_t;\n\t"
+   51 [-]: CALL      R12 2 1      ;  := R12(R13)
+   52 [-]: GETTABLE  R12 R9 K21   ; R12 := R9["typeof"]
+   53 [-]: LOADK     R13 K22      ; R13 := "uint8_t[256]"
+   54 [-]: CALL      R12 2 2      ; R12 := R12(R13)
+   55 [-]: GETTABLE  R13 R9 K21   ; R13 := R9["typeof"]
+   56 [-]: LOADK     R14 K23      ; R14 := "idx_t"
+   57 [-]: CALL      R13 2 2      ; R13 := R13(R14)
+   58 [-]: GETTABLE  R14 R9 K21   ; R14 := R9["typeof"]
+   59 [-]: LOADK     R15 K24      ; R15 := "uint8_t[?]"
+   60 [-]: CALL      R14 2 2      ; R14 := R14(R15)
+   61 [-]: (null)                 ; 
+   62 [-]: CLOSURE   R15 1        ; R15 := closure(Function #0_1)
+   63 [-]: MOVE      R7 R15       ; R7 := R15
+   64 [-]: CLOSURE   R15 2        ; R15 := closure(Function #0_2)
+   65 [-]: MOVE      R8 R15       ; R8 := R15
+   66 [-]: JMP       R10 6        ; PC += 6 (goto 73); close all upvalues in R9 to top
+   67 [-]: JMP       R0 5         ; PC += 5 (goto 73)
+   68 [-]: CLOSURE   R9 3         ; R9 := closure(Function #0_3)
+   69 [-]: MOVE      R7 R9        ; R7 := R9
+   70 [-]: CLOSURE   R9 4         ; R9 := closure(Function #0_4)
+   71 [-]: MOVE      R8 R9        ; R8 := R9
+   72 [-]: (null)                 ; 
+   73 [-]: CLOSURE   R9 5         ; R9 := closure(Function #0_5)
+   74 [-]: LOADBOOL  R10 0 0      ; R10 := false
+   75 [-]: TEST      R10 0        ; if R10 then goto 77 else goto 153
+   76 [-]: JMP       R0 76        ; PC += 76 (goto 153)
+   77 [-]: GETTABUP  R10 U0 K25   ; R10 := U0["os"]
+   78 [-]: GETTABLE  R10 R10 K26  ; R10 := R10["clock"]
+   79 [-]: CLOSURE   R11 6        ; R11 := closure(Function #0_6)
+   80 [-]: GETTABUP  R12 U0 K27   ; R12 := U0["tonumber"]
+   81 [-]: GETTABUP  R13 U0 K28   ; R13 := U0["arg"]
+   82 [-]: GETTABLE  R13 R13 K29  ; R13 := R13[1]
+   83 [-]: CALL      R12 2 2      ; R12 := R12(R13)
+   84 [-]: TEST      R12 1        ; if not R12 then goto 86 else goto 87
+   85 [-]: JMP       R0 1         ; PC += 1 (goto 87)
+   86 [-]: LOADK     R12 K30      ; R12 := 100000
+   87 [-]: LOADK     R13 K31      ; R13 := "Z@\024ÞGéš\236"
+   88 [-]: LOADNIL   R14 0        ; R14 := nil
+   89 [-]: (null)                 ; 
+   90 [-]: MOVE      R15 R10      ; R15 := R10
+   91 [-]: CALL      R15 1 2      ; R15 := R15()
+   92 [-]: MOVE      R14 R15      ; R14 := R15
+   93 [-]: LOADK     R15 K29      ; R15 := 1
+   94 [-]: MOVE      R16 R12      ; R16 := R12
+   95 [-]: LOADK     R17 K29      ; R17 := 1
+   96 [-]: FORPREP   R15 4        ; R15 -= R17; pc += 4 (goto 101)
+   97 [-]: MOVE      R19 R9       ; R19 := R9
+   98 [-]: LOADNIL   R20 0        ; R20 := nil
+   99 [-]: MOVE      R21 R13      ; R21 := R13
+  100 [-]: CALL      R19 3 2      ; R19 := R19(R20 to R21)
+  101 [-]: FORLOOP   R15 -5       ; R15 += R17; if R15 <= R16 then R18 := R15; PC += -5 , goto 97 end
+  102 [-]: MOVE      R15 R11      ; R15 := R11
+  103 [-]: LOADK     R16 K32      ; R16 := "%-16s %8.3f sec (%d times, #key %d)"
+  104 [-]: LOADK     R17 K33      ; R17 := "RC4 keygen test"
+  105 [-]: MOVE      R18 R10      ; R18 := R10
+  106 [-]: CALL      R18 1 2      ; R18 := R18()
+  107 [-]: SUB       R18 R18 R14  ; R18 := R18 - R14
+  108 [-]: MOVE      R19 R12      ; R19 := R12
+  109 [-]: LEN       R20 R13      ; R20 := #R13
+  110 [-]: CALL      R15 6 1      ;  := R15(R16 to R20)
+  111 [-]: GETTABUP  R15 U0 K34   ; R15 := U0["collectgarbage"]
+  112 [-]: CALL      R15 1 1      ;  := R15()
+  113 [-]: MOVE      R15 R9       ; R15 := R9
+  114 [-]: LOADNIL   R16 0        ; R16 := nil
+  115 [-]: MOVE      R17 R13      ; R17 := R13
+  116 [-]: CALL      R15 3 2      ; R15 := R15(R16 to R17)
+  117 [-]: MOVE      R16 R9       ; R16 := R9
+  118 [-]: LOADNIL   R17 0        ; R17 := nil
+  119 [-]: MOVE      R18 R13      ; R18 := R13
+  120 [-]: CALL      R16 3 2      ; R16 := R16(R17 to R18)
+  121 [-]: LOADK     R17 K35      ; R17 := "bS1hjNeePwaj6dY293F7rzmcTFjZVS9O9vAq5l69onIiZTOwZ3LrtuiWLT0Jpr3lZ0XJ11Ajw6RoyLP6Xf66lbFu68edKJK8oyGJLu9xFTQRaFXrsMu9nX4Q5qufETjU0nsN6JZxGXQZfAAcgFyvlik2tJEyovhHsEINhtXnYuj7VpUEZl8ZXAVf2Aa5cbSYVcb1wY3D2ts2kHHXVqUhKpYQ60LKGbWOB1CKkSDFR8JfL9tBmpezS9MWCh1yTUXjfFxSbEq3KV7c8qtwxKGjINoDAMWDQLO0qBGC8IitKyc1zbBUbHBPTvx9TPiGpYObQeX5Ktu7ZtiRpak2o5h9AfEXHCd4tL1F2OsQfpMZghGWnRAez32JeWksXis6X1uJAZgA6mB5Fc7CErLJCiSJVl1TbG4Z7KhypNN0MOfeVV7RY5shwQtYixzA86LNa4w8It2XyjYe6qrcYX3Eq3cKEFFfBPJXZnqwoO3W6MJ52KUrTWcOtqnnfOtWhm9FsLZM"
+  122 [-]: MOVE      R18 R10      ; R18 := R10
+  123 [-]: CALL      R18 1 2      ; R18 := R18()
+  124 [-]: MOVE      R14 R18      ; R14 := R18
+  125 [-]: LOADK     R18 K29      ; R18 := 1
+  126 [-]: MOVE      R19 R12      ; R19 := R12
+  127 [-]: LOADK     R20 K29      ; R20 := 1
+  128 [-]: FORPREP   R18 13       ; R18 -= R20; pc += 13 (goto 142)
+  129 [-]: MOVE      R22 R15      ; R22 := R15
+  130 [-]: MOVE      R23 R17      ; R23 := R17
+  131 [-]: CALL      R22 2 2      ; R22 := R22(R23)
+  132 [-]: MOVE      R23 R16      ; R23 := R16
+  133 [-]: MOVE      R24 R22      ; R24 := R22
+  134 [-]: CALL      R23 2 2      ; R23 := R23(R24)
+  135 [-]: (null)                 ; 
+  136 [-]: GETTABUP  R24 U0 K36   ; R24 := U0["assert"]
+  137 [-]: EQ        1 R17 R23    ; if R17 ~= R23 then goto 139 else goto 140
+  138 [-]: JMP       R0 1         ; PC += 1 (goto 140)
+  139 [-]: LOADBOOL  R25 0 1      ; R25 := false; goto 141
+  140 [-]: LOADBOOL  R25 1 0      ; R25 := true
+  141 [-]: CALL      R24 2 1      ;  := R24(R25)
+  142 [-]: FORLOOP   R18 -14      ; R18 += R20; if R18 <= R19 then R21 := R18; PC += -14 , goto 129 end
+  143 [-]: MOVE      R18 R11      ; R18 := R11
+  144 [-]: LOADK     R19 K37      ; R19 := "%-16s %8.3f sec (%d times, #key %d, #input %d)"
+  145 [-]: LOADK     R20 K38      ; R20 := "RC4 crypt test"
+  146 [-]: MOVE      R21 R10      ; R21 := R10
+  147 [-]: CALL      R21 1 2      ; R21 := R21()
+  148 [-]: SUB       R21 R21 R14  ; R21 := R21 - R14
+  149 [-]: MOVE      R22 R12      ; R22 := R12
+  150 [-]: LEN       R23 R13      ; R23 := #R13
+  151 [-]: LEN       R24 R17      ; R24 := #R17
+  152 [-]: CALL      R18 7 1      ;  := R18(R19 to R24)
+  153 [-]: MOVE      R10 R1       ; R10 := R1
+  154 [-]: NEWTABLE  R11 0 0      ; R11 := {} (size = 0,0)
+  155 [-]: NEWTABLE  R12 0 2      ; R12 := {} (size = 0,2)
+  156 [-]: SETTABLE  R12 K40 R9   ; R12["__call"] := R9
+  157 [-]: SETTABLE  R12 K41 K42  ; R12["__metatable"] := false
+  158 [-]: CALL      R10 3 2      ; R10 := R10(R11 to R12)
+  159 [-]: SETTABUP  U0 K39 R10   ; U0["rc4"] := R10
+  160 [-]: (null)                 ; 
+  161 [-]: CLOSURE   R10 7        ; R10 := closure(Function #0_7)
+  162 [-]: SETTABUP  U0 K43 R10   ; U0["dump_table"] := R10
+  163 [-]: CLOSURE   R10 8        ; R10 := closure(Function #0_8)
+  164 [-]: SETTABUP  U0 K44 R10   ; U0["dumpTable"] := R10
+  165 [-]: CLOSURE   R10 9        ; R10 := closure(Function #0_9)
+  166 [-]: SETTABUP  U0 K45 R10   ; U0["check"] := R10
+  167 [-]: GETTABUP  R10 U0 K46   ; R10 := U0["print"]
+  168 [-]: GETTABUP  R11 U0 K45   ; R11 := U0["check"]
+  169 [-]: LOADK     R12 K47      ; R12 := "E0EA72E0E1C1BFFBC26E8B47AD9D809C"
+  170 [-]: CALL      R11 2 0      ; R11 to top := R11(R12)
+  171 [-]: CALL      R10 0 1      ;  := R10(R11 to top)
+  172 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_0
+; Defined at line: 37
+; #Upvalues:       3
+; #Parameters:     1
+; Is_vararg:       0
+; Max Stack Size:  34
+
+    0 [-]: NEWTABLE  R1 24 0      ; R1 := {} (size = 24,0)
+    1 [-]: LOADK     R2 K0        ; R2 := 183
+    2 [-]: LOADK     R3 K1        ; R3 := 115
+    3 [-]: LOADK     R4 K2        ; R4 := 128
+    4 [-]: LOADK     R5 K3        ; R5 := 100
+    5 [-]: LOADK     R6 K4        ; R6 := 10
+    6 [-]: LOADK     R7 K5        ; R7 := 204
+    7 [-]: LOADK     R8 K6        ; R8 := 81
+    8 [-]: LOADK     R9 K7        ; R9 := 15
+    9 [-]: LOADK     R10 K8       ; R10 := 29
+   10 [-]: LOADK     R11 K9       ; R11 := 88
+   11 [-]: LOADK     R12 K10      ; R12 := 67
+   12 [-]: LOADK     R13 K11      ; R13 := 119
+   13 [-]: LOADK     R14 K12      ; R14 := 44
+   14 [-]: LOADK     R15 K13      ; R15 := 104
+   15 [-]: LOADK     R16 K14      ; R16 := 202
+   16 [-]: LOADK     R17 K15      ; R17 := 7
+   17 [-]: LOADK     R18 K16      ; R18 := 156
+   18 [-]: LOADK     R19 K17      ; R19 := 164
+   19 [-]: LOADK     R20 K18      ; R20 := 85
+   20 [-]: LOADK     R21 K11      ; R21 := 119
+   21 [-]: LOADK     R22 K19      ; R22 := 3
+   22 [-]: LOADK     R23 K20      ; R23 := 157
+   23 [-]: LOADK     R24 K21      ; R24 := 208
+   24 [-]: LOADK     R25 K22      ; R25 := 191
+   25 [-]: LOADK     R26 K23      ; R26 := 253
+   26 [-]: LOADK     R27 K24      ; R27 := 101
+   27 [-]: LOADK     R28 K25      ; R28 := 2
+   28 [-]: LOADK     R29 K26      ; R29 := 172
+   29 [-]: LOADK     R30 K27      ; R30 := 248
+   30 [-]: LOADK     R31 K28      ; R31 := 131
+   31 [-]: LOADK     R32 K29      ; R32 := 105
+   32 [-]: LOADK     R33 K30      ; R33 := 50
+   33 [-]: SETLIST   R1 32 1      ; R1[0] to R1[31] := R2 to R33 ; R(a)[(c-1)*FPF+i] := R(a+i), 1 <= i <= b, a=1, b=32, c=1, FPF=50
+   34 [-]: LEN       R2 R1        ; R2 := #R1
+   35 [-]: LOADK     R3 K31       ; R3 := 1
+   36 [-]: LOADK     R4 K32       ; R4 := ""
+   37 [-]: LOADK     R5 K31       ; R5 := 1
+   38 [-]: GETTABUP  R6 U0 K33    ; R6 := U0["string"]
+   39 [-]: GETTABLE  R6 R6 K34    ; R6 := R6["len"]
+   40 [-]: MOVE      R7 R0        ; R7 := R0
+   41 [-]: CALL      R6 2 2       ; R6 := R6(R7)
+   42 [-]: LOADK     R7 K31       ; R7 := 1
+   43 [-]: FORPREP   R5 19        ; R5 -= R7; pc += 19 (goto 63)
+   44 [-]: GETTABLE  R9 R0 K36    ; R9 := R0["byte"]
+   45 [-]: MOVE      R11 R8       ; R11 := R8
+   46 [-]: CALL      R9 3 2       ; R9 := R9(R10 to R11)
+   47 [-]: SETTABUP  U0 K35 R9    ; U0["v"] := R9
+   48 [-]: MOD       R9 R8 R2     ; R9 := R8 % R2
+   49 [-]: ADD       R9 R9 K31    ; R9 := R9 + 1
+   50 [-]: SETTABUP  U0 K37 R9    ; U0["ki"] := R9
+   51 [-]: GETUPVAL  R9 U1        ; R9 := U1
+   52 [-]: GETUPVAL  R10 U2       ; R10 := U2
+   53 [-]: GETTABUP  R11 U0 K37   ; R11 := U0["ki"]
+   54 [-]: GETTABLE  R11 R1 R11   ; R11 := R1[R11]
+   55 [-]: GETTABUP  R12 U0 K35   ; R12 := U0["v"]
+   56 [-]: CALL      R10 3 0      ; R10 to top := R10(R11 to R12)
+   57 [-]: CALL      R9 0 2       ; R9 := R9(R10 to top)
+   58 [-]: SETTABUP  U0 K38 R9    ; U0["r"] := R9
+   59 [-]: MOVE      R9 R4        ; R9 := R4
+   60 [-]: GETTABUP  R10 U0 K38   ; R10 := U0["r"]
+   61 [-]: CONCAT    R4 R9 R10    ; R4 := concat(R9 to R10)
+   62 [-]: ADD       R8 R8 K31    ; R8 := R8 + 1
+   63 [-]: FORLOOP   R5 -20       ; R5 += R7; if R5 <= R6 then R8 := R5; PC += -20 , goto 44 end
+   64 [-]: RETURN    R4 2         ; return R4
+   65 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_1
+; Defined at line: 84
+; #Upvalues:       4
+; #Parameters:     1
+; Is_vararg:       0
+; Max Stack Size:  12
+
+    0 [-]: GETUPVAL  R1 U0        ; R1 := U0
+    1 [-]: CALL      R1 1 2       ; R1 := R1()
+    2 [-]: LOADK     R2 K0        ; R2 := 0
+    3 [-]: LOADK     R3 K1        ; R3 := 255
+    4 [-]: LOADK     R4 K2        ; R4 := 1
+    5 [-]: FORPREP   R2 1         ; R2 -= R4; pc += 1 (goto 7)
+    6 [-]: SETTABLE  R1 R5 R5     ; R1[R5] := R5
+    7 [-]: FORLOOP   R2 -2        ; R2 += R4; if R2 <= R3 then R5 := R2; PC += -2 , goto 6 end
+    8 [-]: (null)                 ; 
+    9 [-]: LEN       R2 R0        ; R2 := #R0
+   10 [-]: GETUPVAL  R3 U1        ; R3 := U1
+   11 [-]: MOVE      R4 R2        ; R4 := R2
+   12 [-]: CALL      R3 2 2       ; R3 := R3(R4)
+   13 [-]: GETUPVAL  R4 U2        ; R4 := U2
+   14 [-]: MOVE      R5 R3        ; R5 := R3
+   15 [-]: MOVE      R6 R0        ; R6 := R0
+   16 [-]: MOVE      R7 R2        ; R7 := R2
+   17 [-]: CALL      R4 4 1       ;  := R4(R5 to R7)
+   18 [-]: GETUPVAL  R4 U3        ; R4 := U3
+   19 [-]: CALL      R4 1 2       ; R4 := R4()
+   20 [-]: LOADK     R5 K0        ; R5 := 0
+   21 [-]: LOADK     R6 K1        ; R6 := 255
+   22 [-]: LOADK     R7 K2        ; R7 := 1
+   23 [-]: FORPREP   R5 14        ; R5 -= R7; pc += 14 (goto 38)
+   24 [-]: GETTABLE  R9 R4 K3     ; R9 := R4["v"]
+   25 [-]: GETTABLE  R10 R1 R8    ; R10 := R1[R8]
+   26 [-]: ADD       R9 R9 R10    ; R9 := R9 + R10
+   27 [-]: MOD       R10 R8 R2    ; R10 := R8 % R2
+   28 [-]: GETTABLE  R10 R3 R10   ; R10 := R3[R10]
+   29 [-]: ADD       R9 R9 R10    ; R9 := R9 + R10
+   30 [-]: SETTABLE  R4 K3 R9     ; R4["v"] := R9
+   31 [-]: GETTABLE  R9 R4 K3     ; R9 := R4["v"]
+   32 [-]: GETTABLE  R10 R4 K3    ; R10 := R4["v"]
+   33 [-]: GETTABLE  R10 R1 R10   ; R10 := R1[R10]
+   34 [-]: GETTABLE  R11 R1 R8    ; R11 := R1[R8]
+   35 [-]: SETTABLE  R1 R9 R11    ; R1[R9] := R11
+   36 [-]: SETTABLE  R1 R8 R10    ; R1[R8] := R10
+   37 [-]: (null)                 ; 
+   38 [-]: FORLOOP   R5 -15       ; R5 += R7; if R5 <= R6 then R8 := R5; PC += -15 , goto 24 end
+   39 [-]: NEWTABLE  R5 0 3       ; R5 := {} (size = 0,3)
+   40 [-]: GETUPVAL  R6 U3        ; R6 := U3
+   41 [-]: CALL      R6 1 2       ; R6 := R6()
+   42 [-]: SETTABLE  R5 K4 R6     ; R5["x"] := R6
+   43 [-]: GETUPVAL  R6 U3        ; R6 := U3
+   44 [-]: CALL      R6 1 2       ; R6 := R6()
+   45 [-]: SETTABLE  R5 K5 R6     ; R5["y"] := R6
+   46 [-]: SETTABLE  R5 K6 R1     ; R5["st"] := R1
+   47 [-]: RETURN    R5 2         ; return R5
+   48 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_2
+; Defined at line: 103
+; #Upvalues:       4
+; #Parameters:     2
+; Is_vararg:       0
+; Max Stack Size:  15
+
+    0 [-]: GETTABLE  R2 R0 K0     ; R2 := R0["x"]
+    1 [-]: GETTABLE  R3 R0 K1     ; R3 := R0["y"]
+    2 [-]: GETTABLE  R4 R0 K2     ; R4 := R0["st"]
+    3 [-]: LEN       R5 R1        ; R5 := #R1
+    4 [-]: GETUPVAL  R6 U0        ; R6 := U0
+    5 [-]: MOVE      R7 R5        ; R7 := R5
+    6 [-]: CALL      R6 2 2       ; R6 := R6(R7)
+    7 [-]: GETUPVAL  R7 U1        ; R7 := U1
+    8 [-]: MOVE      R8 R6        ; R8 := R6
+    9 [-]: MOVE      R9 R1        ; R9 := R1
+   10 [-]: MOVE      R10 R5       ; R10 := R5
+   11 [-]: CALL      R7 4 1       ;  := R7(R8 to R10)
+   12 [-]: (null)                 ; 
+   13 [-]: LOADK     R7 K3        ; R7 := 0
+   14 [-]: SUB       R8 R5 K4     ; R8 := R5 - 1
+   15 [-]: LOADK     R9 K4        ; R9 := 1
+   16 [-]: FORPREP   R7 28        ; R7 -= R9; pc += 28 (goto 45)
+   17 [-]: GETTABLE  R11 R2 K5    ; R11 := R2["v"]
+   18 [-]: ADD       R11 R11 K4   ; R11 := R11 + 1
+   19 [-]: SETTABLE  R2 K5 R11    ; R2["v"] := R11
+   20 [-]: GETTABLE  R11 R3 K5    ; R11 := R3["v"]
+   21 [-]: GETTABLE  R12 R2 K5    ; R12 := R2["v"]
+   22 [-]: GETTABLE  R12 R4 R12   ; R12 := R4[R12]
+   23 [-]: ADD       R11 R11 R12  ; R11 := R11 + R12
+   24 [-]: SETTABLE  R3 K5 R11    ; R3["v"] := R11
+   25 [-]: (null)                 ; 
+   26 [-]: GETTABLE  R11 R2 K5    ; R11 := R2["v"]
+   27 [-]: GETTABLE  R12 R3 K5    ; R12 := R3["v"]
+   28 [-]: GETTABLE  R13 R3 K5    ; R13 := R3["v"]
+   29 [-]: GETTABLE  R13 R4 R13   ; R13 := R4[R13]
+   30 [-]: GETTABLE  R14 R2 K5    ; R14 := R2["v"]
+   31 [-]: GETTABLE  R14 R4 R14   ; R14 := R4[R14]
+   32 [-]: SETTABLE  R4 R12 R14   ; R4[R12] := R14
+   33 [-]: SETTABLE  R4 R11 R13   ; R4[R11] := R13
+   34 [-]: GETUPVAL  R11 U2       ; R11 := U2
+   35 [-]: GETTABLE  R12 R6 R10   ; R12 := R6[R10]
+   36 [-]: GETTABLE  R13 R2 K5    ; R13 := R2["v"]
+   37 [-]: GETTABLE  R13 R4 R13   ; R13 := R4[R13]
+   38 [-]: GETTABLE  R14 R3 K5    ; R14 := R3["v"]
+   39 [-]: GETTABLE  R14 R4 R14   ; R14 := R4[R14]
+   40 [-]: ADD       R13 R13 R14  ; R13 := R13 + R14
+   41 [-]: MOD       R13 R13 K6   ; R13 := R13 % 256
+   42 [-]: GETTABLE  R13 R4 R13   ; R13 := R4[R13]
+   43 [-]: CALL      R11 3 2      ; R11 := R11(R12 to R13)
+   44 [-]: SETTABLE  R6 R10 R11   ; R6[R10] := R11
+   45 [-]: FORLOOP   R7 -29       ; R7 += R9; if R7 <= R8 then R10 := R7; PC += -29 , goto 17 end
+   46 [-]: GETUPVAL  R7 U3        ; R7 := U3
+   47 [-]: MOVE      R8 R6        ; R8 := R6
+   48 [-]: MOVE      R9 R5        ; R9 := R5
+   49 [-]: TAILCALL  R7 3 0       ; R7 to top := R7(R8 to R9)
+   50 [-]: RETURN    R7 0         ; return R7 to top
+   51 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_3
+; Defined at line: 124
+; #Upvalues:       0
+; #Parameters:     1
+; Is_vararg:       0
+; Max Stack Size:  12
+
+    0 [-]: NEWTABLE  R1 0 0       ; R1 := {} (size = 0,0)
+    1 [-]: LOADK     R2 K0        ; R2 := 0
+    2 [-]: LOADK     R3 K1        ; R3 := 255
+    3 [-]: LOADK     R4 K2        ; R4 := 1
+    4 [-]: FORPREP   R2 1         ; R2 -= R4; pc += 1 (goto 6)
+    5 [-]: SETTABLE  R1 R5 R5     ; R1[R5] := R5
+    6 [-]: FORLOOP   R2 -2        ; R2 += R4; if R2 <= R3 then R5 := R2; PC += -2 , goto 5 end
+    7 [-]: LEN       R2 R0        ; R2 := #R0
+    8 [-]: LOADK     R3 K0        ; R3 := 0
+    9 [-]: LOADK     R4 K0        ; R4 := 0
+   10 [-]: LOADK     R5 K1        ; R5 := 255
+   11 [-]: LOADK     R6 K2        ; R6 := 1
+   12 [-]: FORPREP   R4 13        ; R4 -= R6; pc += 13 (goto 26)
+   13 [-]: (null)                 ; 
+   14 [-]: GETTABLE  R8 R1 R7     ; R8 := R1[R7]
+   15 [-]: ADD       R8 R3 R8     ; R8 := R3 + R8
+   16 [-]: GETTABLE  R9 R0 K3     ; R9 := R0["byte"]
+   17 [-]: MOD       R11 R7 R2    ; R11 := R7 % R2
+   18 [-]: ADD       R11 R11 K2   ; R11 := R11 + 1
+   19 [-]: CALL      R9 3 2       ; R9 := R9(R10 to R11)
+   20 [-]: ADD       R8 R8 R9     ; R8 := R8 + R9
+   21 [-]: MOD       R3 R8 K4     ; R3 := R8 % 256
+   22 [-]: GETTABLE  R8 R1 R3     ; R8 := R1[R3]
+   23 [-]: GETTABLE  R9 R1 R7     ; R9 := R1[R7]
+   24 [-]: SETTABLE  R1 R3 R9     ; R1[R3] := R9
+   25 [-]: SETTABLE  R1 R7 R8     ; R1[R7] := R8
+   26 [-]: FORLOOP   R4 -14       ; R4 += R6; if R4 <= R5 then R7 := R4; PC += -14 , goto 13 end
+   27 [-]: NEWTABLE  R4 0 3       ; R4 := {} (size = 0,3)
+   28 [-]: SETTABLE  R4 K5 K0     ; R4["x"] := 0
+   29 [-]: SETTABLE  R4 K6 K0     ; R4["y"] := 0
+   30 [-]: SETTABLE  R4 K7 R1     ; R4["st"] := R1
+   31 [-]: RETURN    R4 2         ; return R4
+   32 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_4
+; Defined at line: 140
+; #Upvalues:       3
+; #Parameters:     2
+; Is_vararg:       0
+; Max Stack Size:  15
+
+    0 [-]: GETTABLE  R2 R0 K0     ; R2 := R0["x"]
+    1 [-]: GETTABLE  R3 R0 K1     ; R3 := R0["y"]
+    2 [-]: GETTABLE  R4 R0 K2     ; R4 := R0["st"]
+    3 [-]: NEWTABLE  R5 0 0       ; R5 := {} (size = 0,0)
+    4 [-]: LOADK     R6 K3        ; R6 := 1
+    5 [-]: LEN       R7 R1        ; R7 := #R1
+    6 [-]: LOADK     R8 K3        ; R8 := 1
+    7 [-]: FORPREP   R6 24        ; R6 -= R8; pc += 24 (goto 32)
+    8 [-]: ADD       R10 R2 K3    ; R10 := R2 + 1
+    9 [-]: MOD       R2 R10 K4    ; R2 := R10 % 256
+   10 [-]: GETTABLE  R10 R4 R2    ; R10 := R4[R2]
+   11 [-]: ADD       R10 R3 R10   ; R10 := R3 + R10
+   12 [-]: MOD       R3 R10 K4    ; R3 := R10 % 256
+   13 [-]: (null)                 ; 
+   14 [-]: GETTABLE  R10 R4 R3    ; R10 := R4[R3]
+   15 [-]: GETTABLE  R11 R4 R2    ; R11 := R4[R2]
+   16 [-]: SETTABLE  R4 R3 R11    ; R4[R3] := R11
+   17 [-]: SETTABLE  R4 R2 R10    ; R4[R2] := R10
+   18 [-]: GETUPVAL  R10 U0       ; R10 := U0
+   19 [-]: GETUPVAL  R11 U1       ; R11 := U1
+   20 [-]: GETTABLE  R12 R1 K5    ; R12 := R1["byte"]
+   21 [-]: MOVE      R14 R9       ; R14 := R9
+   22 [-]: CALL      R12 3 2      ; R12 := R12(R13 to R14)
+   23 [-]: GETTABLE  R13 R4 R2    ; R13 := R4[R2]
+   24 [-]: GETTABLE  R14 R4 R3    ; R14 := R4[R3]
+   25 [-]: ADD       R13 R13 R14  ; R13 := R13 + R14
+   26 [-]: MOD       R13 R13 K4   ; R13 := R13 % 256
+   27 [-]: GETTABLE  R13 R4 R13   ; R13 := R4[R13]
+   28 [-]: CALL      R11 3 0      ; R11 to top := R11(R12 to R13)
+   29 [-]: CALL      R10 0 2      ; R10 := R10(R11 to top)
+   30 [-]: SETTABLE  R5 R9 R10    ; R5[R9] := R10
+   31 [-]: (null)                 ; 
+   32 [-]: FORLOOP   R6 -25       ; R6 += R8; if R6 <= R7 then R9 := R6; PC += -25 , goto 8 end
+   33 [-]: MOVE      R6 R2        ; R6 := R2
+   34 [-]: SETTABLE  R0 K1 R3     ; R0["y"] := R3
+   35 [-]: SETTABLE  R0 K0 R6     ; R0["x"] := R6
+   36 [-]: GETUPVAL  R6 U2        ; R6 := U2
+   37 [-]: MOVE      R7 R5        ; R7 := R5
+   38 [-]: TAILCALL  R6 2 0       ; R6 to top := R6(R7)
+   39 [-]: RETURN    R6 0         ; return R6 to top
+   40 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_5
+; Defined at line: 158
+; #Upvalues:       3
+; #Parameters:     2
+; Is_vararg:       0
+; Max Stack Size:  7
+
+    0 [-]: GETUPVAL  R2 U0        ; R2 := U0
+    1 [-]: MOVE      R3 R1        ; R3 := R1
+    2 [-]: CALL      R2 2 2       ; R2 := R2(R3)
+    3 [-]: GETUPVAL  R3 U1        ; R3 := U1
+    4 [-]: MOVE      R4 R2        ; R4 := R2
+    5 [-]: NEWTABLE  R5 0 2       ; R5 := {} (size = 0,2)
+    6 [-]: GETUPVAL  R6 U2        ; R6 := U2
+    7 [-]: SETTABLE  R5 K0 R6     ; R5["__call"] := R6
+    8 [-]: SETTABLE  R5 K1 K2     ; R5["__metatable"] := false
+    9 [-]: TAILCALL  R3 3 0       ; R3 to top := R3(R4 to R5)
+   10 [-]: RETURN    R3 0         ; return R3 to top
+   11 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_6
+; Defined at line: 167
+; #Upvalues:       1
+; #Parameters:     1
+; Is_vararg:       1
+; Max Stack Size:  5
+
+    0 [-]: GETTABUP  R1 U0 K0     ; R1 := U0["io"]
+    1 [-]: GETTABLE  R1 R1 K1     ; R1 := R1["write"]
+    2 [-]: GETTABUP  R2 U0 K2     ; R2 := U0["string"]
+    3 [-]: GETTABLE  R2 R2 K3     ; R2 := R2["format"]
+    4 [-]: MOVE      R3 R0        ; R3 := R0
+    5 [-]: VARARG    R4 0         ; R4 to top := ...
+    6 [-]: CALL      R2 0 2       ; R2 := R2(R3 to top)
+    7 [-]: LOADK     R3 K4        ; R3 := "\n"
+    8 [-]: CALL      R1 3 1       ;  := R1(R2 to R3)
+    9 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_7
+; Defined at line: 213
+; #Upvalues:       1
+; #Parameters:     2
+; Is_vararg:       0
+; Max Stack Size:  16
+
+    0 [-]: LT        0 K0 R1      ; if 5 < R1 then goto 2 else goto 4
+    1 [-]: JMP       R0 2         ; PC += 2 (goto 4)
+    2 [-]: LOADK     R2 K1        ; R2 := ""
+    3 [-]: RETURN    R2 2         ; return R2
+    4 [-]: ADD       R1 R1 K2     ; R1 := R1 + 1
+    5 [-]: GETTABUP  R2 U0 K3     ; R2 := U0["type"]
+    6 [-]: MOVE      R3 R0        ; R3 := R0
+    7 [-]: CALL      R2 2 2       ; R2 := R2(R3)
+    8 [-]: EQ        0 R2 K4      ; if R2 == "table" then goto 10 else goto 60
+    9 [-]: JMP       R0 50        ; PC += 50 (goto 60)
+   10 [-]: LOADK     R2 K5        ; R2 := "{ "
+   11 [-]: LOADK     R3 K6        ; R3 := 0
+   12 [-]: GETTABUP  R4 U0 K7     ; R4 := U0["pairs"]
+   13 [-]: MOVE      R5 R0        ; R5 := R0
+   14 [-]: CALL      R4 2 4       ; R4 to R6 := R4(R5)
+   15 [-]: JMP       R0 37        ; PC += 37 (goto 53)
+   16 [-]: ADD       R3 R3 K2     ; R3 := R3 + 1
+   17 [-]: GETTABUP  R9 U0 K3     ; R9 := U0["type"]
+   18 [-]: MOVE      R10 R7       ; R10 := R7
+   19 [-]: CALL      R9 2 2       ; R9 := R9(R10)
+   20 [-]: EQ        1 R9 K8      ; if R9 ~= "number" then goto 22 else goto 26
+   21 [-]: JMP       R0 4         ; PC += 4 (goto 26)
+   22 [-]: LOADK     R9 K9        ; R9 := "\""
+   23 [-]: MOVE      R10 R7       ; R10 := R7
+   24 [-]: LOADK     R11 K9       ; R11 := "\""
+   25 [-]: CONCAT    R7 R9 R11    ; R7 := concat(R9 to R11)
+   26 [-]: (null)                 ; 
+   27 [-]: EQ        0 R0 R8      ; if R0 == R8 then goto 29 else goto 35
+   28 [-]: JMP       R0 6         ; PC += 6 (goto 35)
+   29 [-]: MOVE      R9 R2        ; R9 := R2
+   30 [-]: LOADK     R10 K10      ; R10 := "["
+   31 [-]: MOVE      R11 R7       ; R11 := R7
+   32 [-]: LOADK     R12 K11      ; R12 := "] = __self,"
+   33 [-]: CONCAT    R2 R9 R12    ; R2 := concat(R9 to R12)
+   34 [-]: JMP       R0 18        ; PC += 18 (goto 53)
+   35 [-]: LT        0 R3 K12     ; if R3 < 30 then goto 37 else goto 48
+   36 [-]: JMP       R0 11        ; PC += 11 (goto 48)
+   37 [-]: MOVE      R9 R2        ; R9 := R2
+   38 [-]: LOADK     R10 K10      ; R10 := "["
+   39 [-]: MOVE      R11 R7       ; R11 := R7
+   40 [-]: LOADK     R12 K13      ; R12 := "] = "
+   41 [-]: GETTABUP  R13 U0 K14   ; R13 := U0["dump_table"]
+   42 [-]: MOVE      R14 R8       ; R14 := R8
+   43 [-]: MOVE      R15 R1       ; R15 := R1
+   44 [-]: CALL      R13 3 2      ; R13 := R13(R14 to R15)
+   45 [-]: LOADK     R14 K15      ; R14 := ","
+   46 [-]: CONCAT    R2 R9 R14    ; R2 := concat(R9 to R14)
+   47 [-]: JMP       R0 5         ; PC += 5 (goto 53)
+   48 [-]: MOVE      R9 R2        ; R9 := R2
+   49 [-]: LOADK     R10 K10      ; R10 := "["
+   50 [-]: MOVE      R11 R7       ; R11 := R7
+   51 [-]: LOADK     R12 K16      ; R12 := "] = ...,"
+   52 [-]: CONCAT    R2 R9 R12    ; R2 := concat(R9 to R12)
+   53 [-]: TFORCALL  R4 2         ; R7 to R8 := R4(R5,R6)
+   54 [-]: TFORLOOP  R6 -39       ; if R7 ~= nil then { R6 := R7 ; pc += -39 (goto 16) }
+   55 [-]: MOVE      R4 R2        ; R4 := R2
+   56 [-]: LOADK     R5 K17       ; R5 := "} "
+   57 [-]: CONCAT    R4 R4 R5     ; R4 := concat(R4 to R5)
+   58 [-]: RETURN    R4 2         ; return R4
+   59 [-]: JMP       R0 15        ; PC += 15 (goto 75)
+   60 [-]: GETTABUP  R2 U0 K3     ; R2 := U0["type"]
+   61 [-]: MOVE      R3 R0        ; R3 := R0
+   62 [-]: CALL      R2 2 2       ; R2 := R2(R3)
+   63 [-]: EQ        0 R2 K18     ; if R2 == "string" then goto 65 else goto 71
+   64 [-]: JMP       R0 6         ; PC += 6 (goto 71)
+   65 [-]: LOADK     R2 K9        ; R2 := "\""
+   66 [-]: MOVE      R3 R0        ; R3 := R0
+   67 [-]: LOADK     R4 K9        ; R4 := "\""
+   68 [-]: CONCAT    R2 R2 R4     ; R2 := concat(R2 to R4)
+   69 [-]: RETURN    R2 2         ; return R2
+   70 [-]: JMP       R0 4         ; PC += 4 (goto 75)
+   71 [-]: GETTABUP  R2 U0 K19    ; R2 := U0["tostring"]
+   72 [-]: MOVE      R3 R0        ; R3 := R0
+   73 [-]: TAILCALL  R2 2 0       ; R2 to top := R2(R3)
+   74 [-]: RETURN    R2 0         ; return R2 to top
+   75 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_8
+; Defined at line: 243
+; #Upvalues:       1
+; #Parameters:     1
+; Is_vararg:       0
+; Max Stack Size:  4
+
+    0 [-]: GETTABUP  R1 U0 K0     ; R1 := U0["dump_table"]
+    1 [-]: MOVE      R2 R0        ; R2 := R0
+    2 [-]: LOADK     R3 K1        ; R3 := 1
+    3 [-]: TAILCALL  R1 3 0       ; R1 to top := R1(R2 to R3)
+    4 [-]: RETURN    R1 0         ; return R1 to top
+    5 [-]: RETURN    R0 1         ; return 
+
+
+; Function:        0_9
+; Defined at line: 248
+; #Upvalues:       1
+; #Parameters:     1
+; Is_vararg:       0
+; Max Stack Size:  34
+
+    0 [-]: SETTABUP  U0 K0 K1     ; U0["k"] := "CDD8AAAA500CA8EF8713E1C758175003"
+    1 [-]: GETTABUP  R1 U0 K3     ; R1 := U0["rc4"]
+    2 [-]: GETTABUP  R2 U0 K0     ; R2 := U0["k"]
+    3 [-]: CALL      R1 2 2       ; R1 := R1(R2)
+    4 [-]: SETTABUP  U0 K2 R1     ; U0["rc4_enc"] := R1
+    5 [-]: SETTABUP  U0 K4 R0     ; U0["plain"] := R0
+    6 [-]: GETTABUP  R1 U0 K5     ; R1 := U0["prexor"]
+    7 [-]: MOVE      R2 R0        ; R2 := R0
+    8 [-]: CALL      R1 2 2       ; R1 := R1(R2)
+    9 [-]: SETTABUP  U0 K4 R1     ; U0["plain"] := R1
+   10 [-]: GETTABUP  R1 U0 K2     ; R1 := U0["rc4_enc"]
+   11 [-]: GETTABUP  R2 U0 K4     ; R2 := U0["plain"]
+   12 [-]: CALL      R1 2 2       ; R1 := R1(R2)
+   13 [-]: SETTABUP  U0 K6 R1     ; U0["encrypted"] := R1
+   14 [-]: NEWTABLE  R1 24 0      ; R1 := {} (size = 24,0)
+   15 [-]: LOADK     R2 K8        ; R2 := 196
+   16 [-]: LOADK     R3 K9        ; R3 := 243
+   17 [-]: LOADK     R4 K10       ; R4 := 228
+   18 [-]: LOADK     R5 K11       ; R5 := 110
+   19 [-]: LOADK     R6 K12       ; R6 := 198
+   20 [-]: LOADK     R7 K13       ; R7 := 157
+   21 [-]: LOADK     R8 K14       ; R8 := 94
+   22 [-]: LOADK     R9 K15       ; R9 := 18
+   23 [-]: LOADK     R10 K16      ; R10 := 69
+   24 [-]: LOADK     R11 K17      ; R11 := 27
+   25 [-]: LOADK     R12 K18      ; R12 := 52
+   26 [-]: LOADK     R13 K19      ; R13 := 91
+   27 [-]: LOADK     R14 K20      ; R14 := 68
+   28 [-]: LOADK     R15 K21      ; R15 := 162
+   29 [-]: LOADK     R16 K22      ; R16 := 205
+   30 [-]: LOADK     R17 K23      ; R17 := 155
+   31 [-]: LOADK     R18 K24      ; R18 := 56
+   32 [-]: LOADK     R19 K25      ; R19 := 241
+   33 [-]: LOADK     R20 K26      ; R20 := 34
+   34 [-]: LOADK     R21 K27      ; R21 := 116
+   35 [-]: LOADK     R22 K28      ; R22 := 158
+   36 [-]: LOADK     R23 K29      ; R23 := 77
+   37 [-]: LOADK     R24 K30      ; R24 := 111
+   38 [-]: LOADK     R25 K31      ; R25 := 66
+   39 [-]: LOADK     R26 K32      ; R26 := 152
+   40 [-]: LOADK     R27 K33      ; R27 := 103
+   41 [-]: LOADK     R28 K34      ; R28 := 174
+   42 [-]: LOADK     R29 K35      ; R29 := 84
+   43 [-]: LOADK     R30 K36      ; R30 := 123
+   44 [-]: LOADK     R31 K37      ; R31 := 234
+   45 [-]: LOADK     R32 K19      ; R32 := 91
+   46 [-]: LOADK     R33 K38      ; R33 := 133
+   47 [-]: SETLIST   R1 32 1      ; R1[0] to R1[31] := R2 to R33 ; R(a)[(c-1)*FPF+i] := R(a+i), 1 <= i <= b, a=1, b=32, c=1, FPF=50
+   48 [-]: SETTABUP  U0 K7 R1     ; U0["dst"] := R1
+   49 [-]: SETTABUP  U0 K39 K40   ; U0["res"] := ""
+   50 [-]: SETTABUP  U0 K41 K42   ; U0["i"] := 1
+   51 [-]: GETTABUP  R1 U0 K41    ; R1 := U0["i"]
+   52 [-]: GETTABUP  R2 U0 K43    ; R2 := U0["string"]
+   53 [-]: GETTABLE  R2 R2 K44    ; R2 := R2["len"]
+   54 [-]: GETTABUP  R3 U0 K6     ; R3 := U0["encrypted"]
+   55 [-]: CALL      R2 2 2       ; R2 := R2(R3)
+   56 [-]: LE        0 R1 R2      ; if R1 <= R2 then goto 58 else goto 78
+   57 [-]: JMP       R0 20        ; PC += 20 (goto 78)
+   58 [-]: GETTABUP  R1 U0 K43    ; R1 := U0["string"]
+   59 [-]: GETTABLE  R1 R1 K46    ; R1 := R1["sub"]
+   60 [-]: GETTABUP  R2 U0 K6     ; R2 := U0["encrypted"]
+   61 [-]: GETTABUP  R3 U0 K41    ; R3 := U0["i"]
+   62 [-]: GETTABUP  R4 U0 K41    ; R4 := U0["i"]
+   63 [-]: CALL      R1 4 2       ; R1 := R1(R2 to R4)
+   64 [-]: SETTABUP  U0 K45 R1    ; U0["v"] := R1
+   65 [-]: GETTABUP  R1 U0 K39    ; R1 := U0["res"]
+   66 [-]: GETTABUP  R2 U0 K43    ; R2 := U0["string"]
+   67 [-]: GETTABLE  R2 R2 K47    ; R2 := R2["byte"]
+   68 [-]: GETTABUP  R3 U0 K45    ; R3 := U0["v"]
+   69 [-]: CALL      R2 2 2       ; R2 := R2(R3)
+   70 [-]: LOADK     R3 K48       ; R3 := ","
+   71 [-]: CONCAT    R1 R1 R3     ; R1 := concat(R1 to R3)
+   72 [-]: SETTABUP  U0 K39 R1    ; U0["res"] := R1
+   73 [-]: GETTABUP  R1 U0 K41    ; R1 := U0["i"]
+   74 [-]: ADD       R1 R1 K42    ; R1 := R1 + 1
+   75 [-]: SETTABUP  U0 K41 R1    ; U0["i"] := R1
+   76 [-]: (null)                 ; 
+   77 [-]: JMP       R0 -27       ; PC += -27 (goto 51)
+   78 [-]: SETTABUP  U0 K41 K42   ; U0["i"] := 1
+   79 [-]: GETTABUP  R1 U0 K41    ; R1 := U0["i"]
+   80 [-]: GETTABUP  R2 U0 K43    ; R2 := U0["string"]
+   81 [-]: GETTABLE  R2 R2 K44    ; R2 := R2["len"]
+   82 [-]: GETTABUP  R3 U0 K6     ; R3 := U0["encrypted"]
+   83 [-]: CALL      R2 2 2       ; R2 := R2(R3)
+   84 [-]: LE        0 R1 R2      ; if R1 <= R2 then goto 86 else goto 109
+   85 [-]: JMP       R0 23        ; PC += 23 (goto 109)
+   86 [-]: GETTABUP  R1 U0 K43    ; R1 := U0["string"]
+   87 [-]: GETTABLE  R1 R1 K46    ; R1 := R1["sub"]
+   88 [-]: GETTABUP  R2 U0 K6     ; R2 := U0["encrypted"]
+   89 [-]: GETTABUP  R3 U0 K41    ; R3 := U0["i"]
+   90 [-]: GETTABUP  R4 U0 K41    ; R4 := U0["i"]
+   91 [-]: CALL      R1 4 2       ; R1 := R1(R2 to R4)
+   92 [-]: SETTABUP  U0 K45 R1    ; U0["v"] := R1
+   93 [-]: (null)                 ; 
+   94 [-]: GETTABUP  R1 U0 K43    ; R1 := U0["string"]
+   95 [-]: GETTABLE  R1 R1 K47    ; R1 := R1["byte"]
+   96 [-]: GETTABUP  R2 U0 K45    ; R2 := U0["v"]
+   97 [-]: CALL      R1 2 2       ; R1 := R1(R2)
+   98 [-]: GETTABUP  R2 U0 K7     ; R2 := U0["dst"]
+   99 [-]: GETTABUP  R3 U0 K41    ; R3 := U0["i"]
+  100 [-]: GETTABLE  R2 R2 R3     ; R2 := R2[R3]
+  101 [-]: EQ        1 R1 R2      ; if R1 ~= R2 then goto 103 else goto 105
+  102 [-]: JMP       R0 2         ; PC += 2 (goto 105)
+  103 [-]: LOADBOOL  R1 0 0       ; R1 := false
+  104 [-]: RETURN    R1 2         ; return R1
+  105 [-]: GETTABUP  R1 U0 K41    ; R1 := U0["i"]
+  106 [-]: ADD       R1 R1 K42    ; R1 := R1 + 1
+  107 [-]: SETTABUP  U0 K41 R1    ; U0["i"] := R1
+  108 [-]: JMP       R0 -30       ; PC += -30 (goto 79)
+  109 [-]: (null)                 ; 
+  110 [-]: LOADBOOL  R1 1 0       ; R1 := true
+  111 [-]: RETURN    R1 2         ; return R1
+  112 [-]: RETURN    R0 1         ; return 
+
+
