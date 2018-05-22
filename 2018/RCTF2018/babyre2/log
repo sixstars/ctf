@@ -1,0 +1,46 @@
+
+
+call    trans
+movdqa  xmm1, xmmword ptr [rsp+198h+result]      xmmword_602060
+mov     [rsp+198h+result+78h], rax
+movdqa  xmm0, cs:xmmword_602070
+pxor    xmm1, cs:array128
+movdqa  xmm4, xmmword ptr [rsp+198h+result+20h]  xmmword_602080
+pxor    xmm0, xmmword ptr [rsp+198h+result+10h]  xmmword_602070
+movdqa  xmm3, xmmword ptr [rsp+198h+result+30h]  xmmword_602090
+pxor    xmm4, cs:xmmword_602080
+movdqa  xmm2, xmmword ptr [rsp+198h+result+40h]  xmmword_6020A0
+pxor    xmm3, cs:xmmword_602090
+por     xmm1, xmm0
+pxor    xmm2, cs:xmmword_6020A0
+
+movdqa  xmm0, xmmword ptr [rsp+198h+result+60h]   result+0x60 must be xmmword_6020C0
+por     xmm4, xmm1
+movdqa  xmm1, xmmword ptr [rsp+198h+result+50h]   result+0x50 must be xmmword_6020B0
+pxor    xmm0, cs:xmmword_6020C0
+por     xmm3, xmm4
+pxor    xmm1, cs:xmmword_6020B0
+por     xmm2, xmm3
+
+# xmm 0 1 2 must be 0
+movdqa  xmm3, xmm2   0
+movdqa  xmm2, xmm1   0
+movdqa  xmm1, xmm0   0
+
+
+movdqa  xmm0, cs:xmmword_6020D0
+pxor    xmm0, xmmword ptr [rsp+198h+result+70h]   result+0x70 must be xmmword_6020D0
+
+por     xmm2, xmm3 =0
+por     xmm1, xmm2 =0
+
+por     xmm0, xmm1
+
+xmm0 == 0
+
+movdqa  xmm1, xmm0
+psrldq  xmm1, 8
+por     xmm0   0, xmm1   0
+movq    rax, xmm0   
+test    rax, rax     = 0 
+jz      short loc_400A86

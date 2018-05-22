@@ -1,0 +1,1142 @@
+0:jmp 0x30#
+30:mov reg2,0x100
+35:reg2++
+36:mov reg1,byte code[reg2(0x101)] # 0x49
+37:putchr I
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x102)] # 0x6e
+37:putchr n
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x103)] # 0x70
+37:putchr p
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x104)] # 0x75
+37:putchr u
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x105)] # 0x74
+37:putchr t
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x106)] # 0x20
+37:putchr  
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x107)] # 0x46
+37:putchr F
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x108)] # 0x6c
+37:putchr l
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x109)] # 0x61
+37:putchr a
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x10a)] # 0x67
+37:putchr g
+38:jmp to 0x35 because byte code[0x100]!=0
+35:reg2++
+36:mov reg1,byte code[reg2(0x10b)] # 0x3a
+37:putchr :
+38:now jmp to 0x41
+41:nop
+42:mov reg2,0x110
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x111]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x112]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x113]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x114]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x115]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x116]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x117]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x118]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x119]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x11a]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x11b]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x11c]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x11d]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x11e]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x11f]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x120]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x121]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x122]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x123]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x124]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x125]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x126]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x127]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x128]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x129]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x12a]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x12b]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x12c]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x12d]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x12e]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x12f]=reg1#0x61
+4b:jmp to 0x47 because byte code[0x110]!=0
+47:reg2++
+48:getchr a to reg1
+49:nop
+4a:code[0x130]=reg1#0x61
+4b:now jmp to 0x54
+54:nop
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x111
+60:mov reg1,byte code[reg1(0x111)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x111
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x111]=reg1#0x41
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x21
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x112
+60:mov reg1,byte code[reg1(0x112)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x112
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x112]=reg1#0x40
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x22
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x113
+60:mov reg1,byte code[reg1(0x113)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x113
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x113]=reg1#0x43
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x23
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x114
+60:mov reg1,byte code[reg1(0x114)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x114
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x114]=reg1#0x42
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x24
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x115
+60:mov reg1,byte code[reg1(0x115)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x115
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x115]=reg1#0x45
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x25
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x116
+60:mov reg1,byte code[reg1(0x116)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x116
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x116]=reg1#0x44
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x26
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x117
+60:mov reg1,byte code[reg1(0x117)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x117
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x117]=reg1#0x47
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x27
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x118
+60:mov reg1,byte code[reg1(0x118)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x118
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x118]=reg1#0x46
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x28
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x119
+60:mov reg1,byte code[reg1(0x119)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x119
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x119]=reg1#0x49
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x29
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x11a
+60:mov reg1,byte code[reg1(0x11a)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x11a
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x11a]=reg1#0x48
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x2a
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x11b
+60:mov reg1,byte code[reg1(0x11b)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x11b
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x11b]=reg1#0x4b
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x2b
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x11c
+60:mov reg1,byte code[reg1(0x11c)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x11c
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x11c]=reg1#0x4a
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x2c
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x11d
+60:mov reg1,byte code[reg1(0x11d)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x11d
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x11d]=reg1#0x4d
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x2d
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x11e
+60:mov reg1,byte code[reg1(0x11e)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x11e
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x11e]=reg1#0x4c
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x2e
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x11f
+60:mov reg1,byte code[reg1(0x11f)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x11f
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x11f]=reg1#0x4f
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x2f
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x120
+60:mov reg1,byte code[reg1(0x120)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x120
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x120]=reg1#0x4e
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x30
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x121
+60:mov reg1,byte code[reg1(0x121)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x121
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x121]=reg1#0x51
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x31
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x122
+60:mov reg1,byte code[reg1(0x122)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x122
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x122]=reg1#0x50
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x32
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x123
+60:mov reg1,byte code[reg1(0x123)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x123
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x123]=reg1#0x53
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x33
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x124
+60:mov reg1,byte code[reg1(0x124)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x124
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x124]=reg1#0x52
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x34
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x125
+60:mov reg1,byte code[reg1(0x125)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x125
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x125]=reg1#0x55
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x35
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x126
+60:mov reg1,byte code[reg1(0x126)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x126
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x126]=reg1#0x54
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x36
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x127
+60:mov reg1,byte code[reg1(0x127)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x127
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x127]=reg1#0x57
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x37
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x128
+60:mov reg1,byte code[reg1(0x128)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x128
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x128]=reg1#0x56
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x38
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x129
+60:mov reg1,byte code[reg1(0x129)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x129
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x129]=reg1#0x59
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x39
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x12a
+60:mov reg1,byte code[reg1(0x12a)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x12a
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x12a]=reg1#0x58
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x3a
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x12b
+60:mov reg1,byte code[reg1(0x12b)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x12b
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x12b]=reg1#0x5b
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x3b
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x12c
+60:mov reg1,byte code[reg1(0x12c)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x12c
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x12c]=reg1#0x5a
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x3c
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x12d
+60:mov reg1,byte code[reg1(0x12d)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x12d
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x12d]=reg1#0x5d
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x3d
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x12e
+60:mov reg1,byte code[reg1(0x12e)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x12e
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x12e]=reg1#0x5c
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x3e
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x12f
+60:mov reg1,byte code[reg1(0x12f)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x12f
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x12f]=reg1#0x5f
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x3f
+ac:jmp to 0x55 because byte code[0x145]!=0
+55:mov reg1,byte code[0x140]
+5a:mov reg2,reg1
+5b:add reg1,0xf1# reg1=0x130
+60:mov reg1,byte code[reg1(0x130)] # 0x61
+61:mov byte code[0x143],reg1
+66:not and reg1,reg2
+67:mov byte code[0x141],reg1
+6c:mov reg2,reg1
+6d:mov reg1,byte code[0x140]
+72:not and reg1,reg2
+73:mov byte code[0x142],reg1
+78:mov reg1,byte code[0x141]
+7d:mov reg1,byte code[0x143]
+82:not and reg1,reg2
+83:mov reg2,reg1
+84:mov reg1,byte code[0x142]
+89:not and reg1,reg2
+8a:mov byte code[0x144],reg1
+8f:nop
+90:mov reg1,byte code[0x140]
+95:add reg1,0xf1# reg1=0x130
+9a:mov reg2,reg1
+9b:mov reg1,byte code[0x144]
+a0:code[0x130]=reg1#0x5e
+a1:mov reg2,byte code[0x140]
+a6:reg2++
+a7:mov byte code[0x140],reg2 #0x40
+ac:now jmp to 0xb5
+b5:nop
+b6:mov reg1,byte code[0x146]
+bb:add reg1,0x5# reg1=0x24
+c0:mov reg1,byte code[reg1(0x24)] # 0x9
+c1:mov reg2,reg1
+c2:mov reg1,byte code[0x146]
+c7:add reg1,0x111# reg1=0x130
+cc:mov reg1,byte code[reg1(0x130)] # 0x5e
+cd:sub reg1,reg2
+ce:jmp 0xcf if reg1==0 
+160:mov reg2,0x150
+165:reg2++
+166:mov reg1,byte code[reg2(0x151)] # 0x57
+167:putchr W
+168:jmp to 0x165 because byte code[0x150]!=0
+165:reg2++
+166:mov reg1,byte code[reg2(0x152)] # 0x72
+167:putchr r
+168:jmp to 0x165 because byte code[0x150]!=0
+165:reg2++
+166:mov reg1,byte code[reg2(0x153)] # 0x6f
+167:putchr o
+168:jmp to 0x165 because byte code[0x150]!=0
+165:reg2++
+166:mov reg1,byte code[reg2(0x154)] # 0x6e
+167:putchr n
+168:jmp to 0x165 because byte code[0x150]!=0
+165:reg2++
+166:mov reg1,byte code[reg2(0x155)] # 0x67
+167:putchr g
+168:jmp to 0x165 because byte code[0x150]!=0
+165:reg2++
+166:mov reg1,byte code[reg2(0x156)] # 0xa
+167:putchr 
+
+168:now jmp to 0x171
+171:ret 0x0
