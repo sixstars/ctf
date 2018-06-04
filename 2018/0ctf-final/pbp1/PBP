@@ -1,0 +1,162 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+import signal
+import sys
+import os
+import binascii
+from Crypto.PublicKey import RSA
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.backends import default_backend
+from cryptography.exceptions import InvalidTag
+from pyasn1.type import univ, namedtype
+from pyasn1.codec.der import encoder, decoder
+from pyasn1.error import PyAsn1Error
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+rsa = RSA.importKey(file('private.pem').read())
+
+class PBP_Message(univ.Sequence):
+    componentType = namedtype.NamedTypes(
+            namedtype.NamedType('key', univ.Integer()),
+            namedtype.NamedType('iv', univ.OctetString()),
+            namedtype.NamedType('tag', univ.OctetString()),
+            namedtype.NamedType('ciphertext', univ.OctetString()))
+
+
+def encryption():
+    length = input_int('Your message length: ')
+    if length < 0 or length > 65536:
+        print 'Invalid Length!'
+        return
+    print 'Input your message:'
+    sys.stdout.flush()
+    msg = sys.stdin.read(length)
+    key = os.urandom(32)
+    ct = encrypt(rsa, key, msg)
+    print '-----BEGIN PBP MESSAGE-----\n%s-----END PBP MESSAGE-----' % ct.encode('base64')
+    sys.stdout.flush()
+
+def decryption():
+    print 'Input your PBP message:'
+    sys.stdout.flush()
+    msg = readuntil(sys.stdin, '-----END PBP MESSAGE-----\n')
+    st = msg.find('-----BEGIN PBP MESSAGE-----\n')
+    ed = msg.find('-----END PBP MESSAGE-----\n')
+    if st < 0 or ed < 0:
+        print 'Invalid Message!'
+        return
+    st += len('-----BEGIN PBP MESSAGE-----\n')
+    try:
+        msg = msg[st:ed].decode('base64')
+    except binascii.Error:
+        print 'Invalid Message!'
+        return
+    plain = decrypt(rsa, msg)
+    if plain is None:
+        print 'Invalid Message!'
+        return
+    print 'Your Message:\n%s' % plain
+    sys.stdout.flush()
+
+def print_pubkey():
+    print rsa.publickey().exportKey()
+    sys.stdout.flush()
+
+def challenge():
+    length = input_int('Your message length: ')
+    if length < 0 or length > 65536:
+        print 'Invalid Length!'
+        return
+    print 'Input your message:'
+    sys.stdout.flush()
+    msg = sys.stdin.read(length)
+    key = open('flag').read().strip().rjust(32, '\0')
+    ct = encrypt(rsa, key, msg)
+    print '-----BEGIN PBP MESSAGE-----\n%s-----END PBP MESSAGE-----' % ct.encode('base64')
+    sys.stdout.flush()
+
+def encrypt(pubkey, aeskey, m):
+    encaeskey = pow(int(aeskey.encode('hex'), 16), rsa.e, rsa.n)
+    iv = os.urandom(16)
+    aes_gcm = Cipher(algorithms.AES(aeskey), modes.GCM(iv), backend=default_backend()).encryptor()
+    aes_gcm.authenticate_additional_data('Keenlab')
+    enc = aes_gcm.update(m) + aes_gcm.finalize()
+    tag = aes_gcm.tag
+    msg = PBP_Message()
+    msg['key'] = encaeskey
+    msg['iv'] = iv
+    msg['tag'] = tag
+    msg['ciphertext'] = enc
+    ct = encoder.encode(msg)
+    return ct
+
+def decrypt(prikey, c):
+    try:
+        msg, t = decoder.decode(c, asn1Spec=PBP_Message())
+    except PyAsn1Error:
+        return None
+    if t != '':
+        return None
+    encaeskey = long(msg['key'])
+    if encaeskey >= rsa.n:
+        return None
+    iv = bytes(msg['iv'])
+    if len(iv) != 16:
+        return None
+    tag = bytes(msg['tag'])
+    if len(tag) != 16:
+        return None
+    enc = bytes(msg['ciphertext'])
+    aeskey = pow(encaeskey, rsa.d, rsa.n) & ((1<<256)-1)
+    aeskey = ('%064x' % aeskey).decode('hex')
+    aes_gcm = Cipher(algorithms.AES(aeskey), modes.GCM(iv, tag), backend=default_backend()).decryptor()
+    aes_gcm.authenticate_additional_data('Keenlab')
+    try:
+        plain = aes_gcm.update(enc) + aes_gcm.finalize()
+        return plain
+    except InvalidTag:
+        return None
+
+def input_int(prompt):
+    sys.stdout.write(prompt)
+    sys.stdout.flush()
+    try:
+        n = int(raw_input())
+        return n
+    except ValueError:
+        return 0
+    except:
+        exit()
+
+def readuntil(f, delim):
+    data = ''
+    while not data.endswith(delim):
+        tmp = f.read(1)
+        if not tmp:
+            break
+        data += tmp
+    return data
+
+def menu():
+    while True:
+        print "Pretty Bad Privacy Service"
+        print "1. Encryption"
+        print "2. Decryption"
+        print "3. Print PubKey"
+        print "4. Exit"
+        sys.stdout.flush()
+        choice = input_int("Command: ")
+        {
+                1: encryption,
+                2: decryption,
+                3: print_pubkey,
+                4: exit,
+                1337: challenge,
+        }.get(choice, lambda *args:1)()
+        sys.stdout.flush()
+
+if __name__ == "__main__":
+    signal.alarm(120)
+    menu()
+
