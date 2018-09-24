@@ -1,0 +1,135 @@
+[0x0000066a]> pdf
+│           ;-- rip:
+╭ (fcn) fcn.0000066a 219
+│   fcn.0000066a (unsigned int arg1, int arg2, int arg3);
+│           0x0000066a      rbp,8,rsp,-=,rsp,=[8]
+│           0x0000066b      rsp,rbp,=
+│           0x0000066e      edi,0x24,rbp,-,=[4]
+│           0x00000671      rsi,0x30,rbp,-,=[8]
+│           0x00000675      rdx,0x38,rbp,-,=[8]
+│           0x00000679      0x30,rbp,-,[8],rax,=
+│           0x0000067d      rax,[4],eax,=,0xffffffff,rax,&=
+│           0x0000067f      eax,0x10,rbp,-,=[4]
+│           0x00000682      0x30,rbp,-,[8],rax,=
+│           0x00000686      0x4,rax,+,[4],eax,=,0xffffffff,rax,&=
+│           0x00000689      eax,0xc,rbp,-,=[4]
+│           0x0000068c      0,0x8,rbp,-,=[4]
+│           0x00000693      1952997742,0x4,rbp,-,=[4]
+│           0x0000069a      0,0x14,rbp,-,=[4]
+│       ╭─< 0x000006a1      0x720,rip,=
+│      ╭──> 0x000006a3      0xc,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006a6      4,eax,<<=,$z,zf,=,$p,pf,=,$s,sf,=
+│      ⋮│   0x000006a9      eax,edx,=,0xffffffff,rdx,&=
+│      ⋮│   0x000006ab      0xc,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006ae      0,cf,=,1,5,-,1,<<,eax,&,?{,1,cf,=,},5,eax,>>,eax,=,$z,zf,=,$p,pf,=,$s,sf,=
+│      ⋮│   0x000006b1      eax,edx,^=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=,0xffffffff,rdx,&=
+│      ⋮│   0x000006b3      0xc,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006b6      rax,rdx,+,ecx,=
+│      ⋮│   0x000006b9      0x8,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006bc      3,eax,&=,$0,of,=,$0,cf,=,$z,zf,=,$s,sf,=,$o,pf,=,0xffffffff,rax,&=
+│      ⋮│   0x000006bf      rax,4,*,rdx,=
+│      ⋮│   0x000006c7      0x38,rbp,-,[8],rax,=
+│      ⋮│   0x000006cb      rdx,rax,+=,$o,of,=,$s,sf,=,$z,zf,=,$c63,cf,=,$p,pf,=
+│      ⋮│   0x000006ce      rax,[4],edx,=,0xffffffff,rdx,&=
+│      ⋮│   0x000006d0      0x8,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006d3      edx,eax,+=,$o,of,=,$s,sf,=,$z,zf,=,$c31,cf,=,$p,pf,=
+│      ⋮│   0x000006d5      ecx,eax,^=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=,0xffffffff,rax,&=
+│      ⋮│   0x000006d7      eax,0x10,rbp,-,+=[4],$o,of,=,$s,sf,=,$z,zf,=,$c31,cf,=,$p,pf,=
+│      ⋮│   0x000006da      0x4,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006dd      eax,0x8,rbp,-,+=[4],$o,of,=,$s,sf,=,$z,zf,=,$c31,cf,=,$p,pf,=
+│      ⋮│   0x000006e0      0x10,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006e3      4,eax,<<=,$z,zf,=,$p,pf,=,$s,sf,=
+│      ⋮│   0x000006e6      eax,edx,=,0xffffffff,rdx,&=
+│      ⋮│   0x000006e8      0x10,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006eb      0,cf,=,1,5,-,1,<<,eax,&,?{,1,cf,=,},5,eax,>>,eax,=,$z,zf,=,$p,pf,=,$s,sf,=
+│      ⋮│   0x000006ee      eax,edx,^=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=,0xffffffff,rdx,&=
+│      ⋮│   0x000006f0      0x10,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006f3      rax,rdx,+,ecx,=
+│      ⋮│   0x000006f6      0x8,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006f9      0,cf,=,1,11,-,1,<<,eax,&,?{,1,cf,=,},11,eax,>>,eax,=,$z,zf,=,$p,pf,=,$s,sf,=
+│      ⋮│   0x000006fc      eax,eax,=,0xffffffff,rax,&=
+│      ⋮│   0x000006fe      3,eax,&=,$0,of,=,$0,cf,=,$z,zf,=,$s,sf,=,$o,pf,=,0xffffffff,rax,&=
+│      ⋮│   0x00000701      rax,4,*,rdx,=
+│      ⋮│   0x00000709      0x38,rbp,-,[8],rax,=
+│      ⋮│   0x0000070d      rdx,rax,+=,$o,of,=,$s,sf,=,$z,zf,=,$c63,cf,=,$p,pf,=
+│      ⋮│   0x00000710      rax,[4],edx,=,0xffffffff,rdx,&=
+│      ⋮│   0x00000712      0x8,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x00000715      edx,eax,+=,$o,of,=,$s,sf,=,$z,zf,=,$c31,cf,=,$p,pf,=
+│      ⋮│   0x00000717      ecx,eax,^=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=,0xffffffff,rax,&=
+│      ⋮│   0x00000719      eax,0xc,rbp,-,+=[4],$o,of,=,$s,sf,=,$z,zf,=,$c31,cf,=,$p,pf,=
+│      ⋮│   0x0000071c      1,0x14,rbp,-,+=[4],$o,of,=,$s,sf,=,$z,zf,=,$c31,cf,=,$p,pf,=
+│      ⋮╰─> 0x00000720      0x14,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮    0x00000723      0x24,rbp,-,[4],eax,==,$z,zf,=,$b32,cf,=,$p,pf,=,$s,sf,=,$o,of,=
+│      ╰──< 0x00000726      cf,?{,1699,rip,=,}
+│           0x0000072c      0x30,rbp,-,[8],rax,=
+│           0x00000730      0x10,rbp,-,[4],edx,=,0xffffffff,rdx,&=
+│           0x00000733      edx,rax,=[4]
+│           0x00000735      0x30,rbp,-,[8],rax,=
+│           0x00000739      0x4,rax,+,rdx,=
+│           0x0000073d      0xc,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│           0x00000740      eax,rdx,=[4]
+│           0x00000742      ,
+│           0x00000743      rsp,[8],rbp,=,8,rsp,+=
+╰           0x00000744      rsp,[8],rip,=,8,rsp,+=
+[0x0000066a]> 
+
+-----------------------------------------------
+
+[0x00000745]> pdf
+╭ (fcn) main 281
+│   main ();
+│           0x00000745      rbp,8,rsp,-=,rsp,=[8]
+│           0x00000746      rsp,rbp,=
+│           0x00000749      -128,rsp,+=,$o,of,=,$s,sf,=,$z,zf,=,$c63,cf,=,$p,pf,=
+│           0x0000074d      0x28,[8],rax,=
+│           0x00000756      rax,0x8,rbp,-,=[8]
+│           0x0000075a      eax,eax,^=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=,0xffffffff,rax,&=
+│           0x0000075c      99,0x70,rbp,-,=[4]
+│           0x00000763      111,0x6c,rbp,-,=[4]
+│           0x0000076a      116,0x68,rbp,-,=[4]
+│           0x00000771      104,0x64,rbp,-,=[4]
+│           0x00000778      97,0x60,rbp,-,=[4]
+│           0x0000077f      110,0x5c,rbp,-,=[4]
+│           0x00000786      8,0x74,rbp,-,=[4]
+│           0x0000078d      2492539336,0x50,rbp,-,=[4]
+│           0x00000794      55281258,0x4c,rbp,-,=[4]
+│           0x0000079b      2196754676,0x48,rbp,-,=[4]
+│           0x000007a2      2821507075,0x44,rbp,-,=[4]
+│           0x000007a9      1768494383,0x40,rbp,-,=[4]
+│           0x000007b0      3785976562,0x3c,rbp,-,=[4]
+│           0x000007b7      3783291222,0x38,rbp,-,=[4]
+│           0x000007be      2216322110,0x34,rbp,-,=[4]
+│           0x000007c5      3164129935,0x30,rbp,-,=[4]
+│           0x000007cc      3771161883,0x2c,rbp,-,=[4]
+│           0x000007d3      1972774763,0x28,rbp,-,=[4]
+│           0x000007da      1762315061,0x24,rbp,-,=[4]
+│           0x000007e1      3932463561,0x20,rbp,-,=[4]
+│           0x000007e8      1672697163,0x1c,rbp,-,=[4]
+│           0x000007ef      1101278339,0x18,rbp,-,=[4]
+│           0x000007f6      4284021098,0x14,rbp,-,=[4]
+│           0x000007fd      2995319743,0x10,rbp,-,=[4]
+│           0x00000804      3170481900,0xc,rbp,-,=[4]
+│           0x0000080b      0,0x78,rbp,-,=[4]
+│       ╭─< 0x00000812      0x83d,rip,=
+│      ╭──> 0x00000814      0x78,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x00000817      rax,rax,+,edx,=
+│      ⋮│   0x0000081a      0x50,rbp,-,rax,=
+│      ⋮│   0x0000081e      edx,edx,=,0xffffffff,rdx,&=
+│      ⋮│   0x00000820      2,rdx,<<=,$z,zf,=,$p,pf,=,$s,sf,=
+│      ⋮│   0x00000824      rdx,rax,+,rcx,=
+│      ⋮│   0x00000828      0x74,rbp,-,[4],eax,=,0xffffffff,rax,&=
+│      ⋮│   0x0000082b      0x70,rbp,-,rdx,=
+│      ⋮│   0x0000082f      rcx,rsi,=
+│      ⋮│   0x00000832      eax,edi,=,0xffffffff,rdi,&=
+│      ⋮│   0x00000834      1642,rip,8,rsp,-=,rsp,=[],rip,=
+│      ⋮│   0x00000839      1,0x78,rbp,-,+=[4],$o,of,=,$s,sf,=,$z,zf,=,$c31,cf,=,$p,pf,=
+│      ⋮╰─> 0x0000083d      8,0x78,rbp,-,[4],==,$z,zf,=,$b32,cf,=,$p,pf,=,$s,sf,=,$o,of,=
+│      ╰──< 0x00000841      zf,cf,|,?{,2068,rip,=,}
+│           0x00000843      0,eax,=,0xffffffff,rax,&=
+│           0x00000848      0x8,rbp,-,[8],rsi,=
+│           0x0000084c      0x28,[8],rsi,^=,$z,zf,=,$p,pf,=,$s,sf,=,$0,cf,=,$0,of,=
+│       ╭─< 0x00000855      zf,?{,2140,rip,=,}
+│       │   0x00000857      1344,rip,8,rsp,-=,rsp,=[],rip,=             // stack_chk_fail
+│       ╰─> 0x0000085c      rbp,rsp,=,rsp,[8],rbp,=,8,rsp,+=
+╰           0x0000085d      rsp,[8],rip,=,8,rsp,+=
+[0x00000745]> 
