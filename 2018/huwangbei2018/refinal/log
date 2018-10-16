@@ -1,0 +1,193 @@
+0: push 0x2f
+5: goto 0 until buf[3] == 0
+7: pop buf[3]
+9: mov buf[0],[m1]
+b: xor buf[2],buf[2]
+d: cmp buf[0],buf[2]
+f: jmp 44 if buf[4] == 0
+11: add m1,1
+12: push 0x46
+17: pop buf[1]
+19: cmp buf[0],buf[1]
+1b: jmp 44 if buf[4] == 1
+1d: push 0x30
+22: pop buf[1]
+24: cmp buf[0],buf[1]
+26: jmp 3e if buf[4] == -1
+28: push 0x39
+2d: pop buf[1]
+2f: cmp buf[0],buf[1]
+31: jmp 3e if buf[4] == -1
+33: push 0x41
+38: pop buf[0]
+3a: cmp buf[0],buf[1]
+3c: jmp 44 if buf[4] == -1
+3e: xor buf[0],buf[0]
+40: cmp buf[0],buf[0]
+42: jmp 49 if buf[4] == 0
+44: xor buf[0],buf[0]
+46: add buf[0],1
+48: return
+49: goto 9 until buf[3] == 0
+4b: push 0x7
+50: pop buf[3]
+52: xor buf[1],buf[1]
+54: sub m1,1
+55: mov buf[0],[m1]
+57: push 0x30
+5c: pop buf[2]
+5e: sub buf[0],buf[2]
+60: push 0xa
+65: pop buf[2]
+67: cmp buf[0],buf[2]
+69: jmp 74 if buf[4] == -1
+6b: push 0x7
+70: pop buf[2]
+72: sub buf[0],buf[2]
+74: push 0x10
+79: pop buf[2]
+7b: mul buf[1],buf[2]
+7d: add buf[1],buf[0]
+7f: goto 54 until buf[3] == 0
+81: push 0x33b488ac
+86: pop buf[2]
+88: cmp buf[1],buf[2]
+8a: xor buf[0],buf[0]
+8c: jmp 91 if buf[4] == 0
+8e: add buf[0],1
+90: return
+91: push 0x7
+96: pop buf[3]
+98: xor buf[1],buf[1]
+9a: sub m1,1
+9b: mov buf[0],[m1]
+9d: push 0x30
+a2: pop buf[2]
+a4: sub buf[0],buf[2]
+a6: push 0xa
+ab: pop buf[2]
+ad: cmp buf[0],buf[2]
+af: jmp ba if buf[4] == -1
+b1: push 0x7
+b6: pop buf[2]
+b8: sub buf[0],buf[2]
+ba: push 0x10
+bf: pop buf[2]
+c1: mul buf[1],buf[2]
+c3: add buf[1],buf[0]
+c5: goto 9a until buf[3] == 0
+c7: push 0x4a0b943f
+cc: pop buf[2]
+ce: cmp buf[1],buf[2]
+d0: xor buf[0],buf[0]
+d2: jmp d7 if buf[4] == 0
+d4: add buf[0],1
+d6: return
+d7: push 0x7
+dc: pop buf[3]
+de: xor buf[1],buf[1]
+e0: sub m1,1
+e1: mov buf[0],[m1]
+e3: push 0x30
+e8: pop buf[2]
+ea: sub buf[0],buf[2]
+ec: push 0xa
+f1: pop buf[2]
+f3: cmp buf[0],buf[2]
+f5: jmp 100 if buf[4] == -1
+f7: push 0x7
+fc: pop buf[2]
+fe: sub buf[0],buf[2]
+100: push 0x10
+105: pop buf[2]
+107: mul buf[1],buf[2]
+109: add buf[1],buf[0]
+10b: goto e0 until buf[3] == 0
+10d: push 0x7c5cdcec
+112: pop buf[2]
+114: cmp buf[1],buf[2]
+116: xor buf[0],buf[0]
+118: jmp 11d if buf[4] == 0
+11a: add buf[0],1
+11c: return
+11d: push 0x7
+122: pop buf[3]
+124: xor buf[1],buf[1]
+126: sub m1,1
+127: mov buf[0],[m1]
+129: push 0x30
+12e: pop buf[2]
+130: sub buf[0],buf[2]
+132: push 0xa
+137: pop buf[2]
+139: cmp buf[0],buf[2]
+13b: jmp 146 if buf[4] == -1
+13d: push 0x7
+142: pop buf[2]
+144: sub buf[0],buf[2]
+146: push 0x10
+14b: pop buf[2]
+14d: mul buf[1],buf[2]
+14f: add buf[1],buf[0]
+151: goto 126 until buf[3] == 0
+153: push 0x3929751b
+158: pop buf[2]
+15a: cmp buf[1],buf[2]
+15c: xor buf[0],buf[0]
+15e: jmp 163 if buf[4] == 0
+160: add buf[0],1
+162: return
+163: push 0x7
+168: pop buf[3]
+16a: xor buf[1],buf[1]
+16c: sub m1,1
+16d: mov buf[0],[m1]
+16f: push 0x30
+174: pop buf[2]
+176: sub buf[0],buf[2]
+178: push 0xa
+17d: pop buf[2]
+17f: cmp buf[0],buf[2]
+181: jmp 18c if buf[4] == -1
+183: push 0x7
+188: pop buf[2]
+18a: sub buf[0],buf[2]
+18c: push 0x10
+191: pop buf[2]
+193: mul buf[1],buf[2]
+195: add buf[1],buf[0]
+197: goto 16c until buf[3] == 0
+199: push 0x1ef26b2d
+19e: pop buf[2]
+1a0: cmp buf[1],buf[2]
+1a2: xor buf[0],buf[0]
+1a4: jmp 1a9 if buf[4] == 0
+1a6: add buf[0],1
+1a8: return
+1a9: push 0x7
+1ae: pop buf[3]
+1b0: xor buf[1],buf[1]
+1b2: sub m1,1
+1b3: mov buf[0],[m1]
+1b5: push 0x30
+1ba: pop buf[2]
+1bc: sub buf[0],buf[2]
+1be: push 0xa
+1c3: pop buf[2]
+1c5: cmp buf[0],buf[2]
+1c7: jmp 1d2 if buf[4] == -1
+1c9: push 0x7
+1ce: pop buf[2]
+1d0: sub buf[0],buf[2]
+1d2: push 0x10
+1d7: pop buf[2]
+1d9: mul buf[1],buf[2]
+1db: add buf[1],buf[0]
+1dd: goto 1b2 until buf[3] == 0
+1df: push 0x838db52e
+1e4: pop buf[2]
+1e6: cmp buf[1],buf[2]
+1e8: xor buf[0],buf[0]
+1ea: jmp 1ee if buf[4] == 0
+1ec: add buf[0],1
+1ee: return
