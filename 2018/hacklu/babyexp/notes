@@ -1,0 +1,32 @@
+Okay, you made it! Now we will take the very same file you just reversed and exploit it! Woohoo! Don't be afraid, you can do it=).
+
+There are several files included in this zip:
+-notes
+this file
+-babyexploit.py:
+this is the script running on the remote server. It allowes you to flip a single bit inside the binary. This should be enough to make this small binary exploitable.
+-asm.template:
+you will have to supply your own code which you will inject into the binary. This template should help you with this task.
+-Makefile
+this Makefile will help you to extract the shellcode bytes out of your own assembly which you wrote.
+
+first of all, try to write your own shellcode. imagine you can run ANY code.
+- which systemcall would be nice to call? (executing a shell)
+if you are stuck here, there are plenty of other people out there who wrote similar code aswell. they might be an inspiration for your code.
+
+once thats done:
+- how can you inject your shellcode into the binary?
+- which protections does the binary have?
+- which permissions has the page the code is in? (peda's "vmmap" (how does "vmmap" work under the hood)?)
+- what do you need to do, in order to execute your own code?
+
+before the binary is being run, you got one single bitflip.
+- how can I assemble bytes to instructions? (rasm2,...)
+- how can I disassemble instructions to bytes? (rasm2,...)
+
+some operational questions:
+- how can I create a socket with $scripting_lang
+- how can I send bytes over this socket?
+- what happens to the userinput in the binary?
+
+you can do it! The flag is in /home/chall/flag. Good Luck, but YOU wont need it;)

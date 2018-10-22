@@ -1,0 +1,2 @@
+- ld and libc are system libs from Ubuntu 18.04.
+- Don't waste time on nsjail, it's just used for chroot.

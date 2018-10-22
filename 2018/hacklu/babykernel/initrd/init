@@ -1,0 +1,68 @@
+#!/bin/busybox sh
+# /bin/sysinfo
+
+/bin/busybox --install /bin
+/bin/mkdir /sbin
+/bin/busybox --install /sbin
+
+export PATH="/bin;$PATH"
+export LD_LIBRARY_PATH="/lib"
+
+#for util in dropbear dbclient dropbearkey dropbearconvert; do
+#	ln -s /bin/dropbearmulti /bin/$util
+#done
+
+mkdir -p /dev /sys /proc /tmp
+mkdir -p /dev/pts
+
+mount -t devtmpfs none /dev
+# mount -t sysfs sys /sys
+mount -t proc proc /proc
+mount -t tmpfs none /tmp
+mount -t devpts devpts /dev/pts
+
+# chown
+chown -R 0:0  /bin /etc /home /init /lib /root /tmp /var
+chown -R 1000:1000 /home/user
+chown 0:0 / /dev /proc /sys
+chown 0:0 /flag
+
+# chmod
+chmod -R 700 /etc /home /root /var
+chmod -R 755 /bin /init /lib
+chmod -R 1777 /tmp
+chmod 755 /
+chmod 755 /etc
+chmod 744 /etc/passwd /etc/group
+chmod 755 /home
+chmod 700 /etc/shadow
+
+chmod 700 /flag
+
+# echo 1 > /proc/sys/kernel/printk
+
+mkdir -p /lib/modules/$(uname -r)
+
+# Setup ip configuration
+#ip link set lo up
+#ip link set eth0 up
+#udhcpc
+#dropbear
+
+insmod "/lib/modules/$(uname -r)/kernel_baby.ko"
+chmod +rw /dev/flux_baby
+chmod +x /client_kernel_baby
+
+# sysinfo
+# exec /bin/sh /dev/ttyS0>&0 1>/dev/ttyS0 2>&1
+sleep 2
+
+ls /
+su user -c /client_kernel_baby
+
+poweroff -f
+
+#while true; do
+#	/bin/setsid /bin/sh -c 'exec /bin/login </dev/ttyS0 >/dev/ttyS0 2>&1'
+#done
+

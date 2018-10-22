@@ -1,0 +1,27 @@
+Hey there, future Reverser!
+
+We created this small challenge to introduce you to reversing. This task might _still_ take quite some time, but trust us, it will be very rewarding!
+We sadly can't spoonfeed you, but we created a set of questions which you might want to answer yourself. We expect you to google on your own and find resources.
+
+Sooo, lets get started!
+
+- What kind of binary have you got infront of you? (Hint: "file" command)
+- How can you disassemble the file? (objdump, gdb, radare...)
+- Which programs are common debuggers?
+- How can I use them? (we recommend gdb with the peda plugin)
+- - how can I set breakpoints?
+- - in which different ways can I step through programs?
+- - how can I print/examine the content of memory/addresses
+- what is inside registers? what's rax, rip, rsp?
+- what is the linux syscall convention?
+- - In which register is the second argument?
+- - In which register is the syscall number?
+- - - where can I find the syscall numbers on my own linux system?
+- what happens at a call instruction?
+- how can I compare strings in assembly?
+- .. ask your teammates for more! annoy them if anything is unclear :P
+- .. if you don't got any teammates, use IRC and say that it's about the baby challenge
+
+There is a lot of work ahead of you, and maybe some sleepless nights with a lot of googling - but it will be worth it;-)!
+We are certain that with a dedicated mind you can solve this task and from there on you'll be ready for a bright future!
+Don't give up, we all have been there. Stick to it and you'll be rewarded =)
