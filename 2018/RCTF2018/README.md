@@ -3,7 +3,7 @@
 ### babyheap
 题目在初始时对堆的topchunk进行了随机化，并且使用calloc申请内存，会把已申请的内存块清空。
 
-- 输入的时候又一个off by zero漏洞，可以修改下一个chunk的size位，伪造heap chunk进行unlink。 
+- 输入的时候又一个off by one漏洞，可以修改下一个chunk的size位，伪造heap chunk进行unlink。 
 - 通过切分unsortbin的堆块将arena的地址写到一个可打印的chunk上。
 - 修改fastbin的fd指针修改malloc hook为gadget地址。  
 - 这时如果直接malloc，所有的gadget都不能用。另外一种办法：触发堆分配的error，在libc_error_msg的函数里会调用strdup函数，触发malloc，跳到gadget上面。
