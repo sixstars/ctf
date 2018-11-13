@@ -1,0 +1,157 @@
+   0:   23 21                   and    esp,DWORD PTR [rcx]
+   2:   20 2f                   and    BYTE PTR [rdi],ch
+   4:   75 73                   jne    0x79
+   6:   72 2f                   jb     0x37
+   8:   62                      (bad)  
+   9:   69 6e 2f 65 6e 76 20    imul   ebp,DWORD PTR [rsi+0x2f],0x20766e65
+  10:   70 79                   jo     0x8b
+  12:   74 68                   je     0x7c
+  14:   6f                      outs   dx,DWORD PTR ds:[rsi]
+  15:   6e                      outs   dx,BYTE PTR ds:[rsi]
+  16:   0a 23                   or     ah,BYTE PTR [rbx]
+  18:   20 2d 2a 2d 20 63       and    BYTE PTR [rip+0x63202d2a],ch        # 0x63202d48
+  1e:   6f                      outs   dx,DWORD PTR ds:[rsi]
+  1f:   64 69 6e 67 3a 20 75    imul   ebp,DWORD PTR fs:[rsi+0x67],0x7475203a
+  26:   74 
+  27:   66 2d 38 20             sub    ax,0x2038
+  2b:   2d 2a 2d 0a 23          sub    eax,0x230a2d2a
+  30:   20 76 69                and    BYTE PTR [rsi+0x69],dh
+  33:   6d                      ins    DWORD PTR es:[rdi],dx
+  34:   3a 66 65                cmp    ah,BYTE PTR [rsi+0x65]
+  37:   6e                      outs   dx,BYTE PTR ds:[rsi]
+  38:   63 3d 75 74 66 2d       movsxd edi,DWORD PTR [rip+0x2d667475]        # 0x2d6674b3
+  3e:   38 0a                   cmp    BYTE PTR [rdx],cl
+  40:   23 0a                   and    ecx,DWORD PTR [rdx]
+  42:   23 20                   and    esp,DWORD PTR [rax]
+  44:   43 6f                   rex.XB outs dx,DWORD PTR ds:[rsi]
+  46:   70 79                   jo     0xc1
+  48:   72 69                   jb     0xb3
+  4a:   67 68 74 20 c2 a9       addr32 push 0xffffffffa9c22074
+  50:   20 32                   and    BYTE PTR [rdx],dh
+  52:   30 31                   xor    BYTE PTR [rcx],dh
+  54:   38 20                   cmp    BYTE PTR [rax],ah
+  56:   68 7a 73 68 61          push   0x6168737a
+  5b:   6e                      outs   dx,BYTE PTR ds:[rsi]
+  5c:   67 20 3c 68             and    BYTE PTR [eax+ebp*2],bh
+  60:   7a 73                   jp     0xd5
+  62:   68 61 6e 67 31          push   0x31676e61
+  67:   35 40 67 6d 61          xor    eax,0x616d6740
+  6c:   69 6c 2e 63 6f 6d 3e    imul   ebp,DWORD PTR [rsi+rbp*1+0x63],0xa3e6d6f
+  73:   0a 
+  74:   23 0a                   and    ecx,DWORD PTR [rdx]
+  76:   23 20                   and    esp,DWORD PTR [rax]
+  78:   44 69 73 74 72 69 62    imul   r14d,DWORD PTR [rbx+0x74],0x75626972
+  7f:   75 
+  80:   74 65                   je     0xe7
+  82:   64 20 75 6e             and    BYTE PTR fs:[rbp+0x6e],dh
+  86:   64 65 72 20             fs gs jb 0xaa
+  8a:   74 65                   je     0xf1
+  8c:   72 6d                   jb     0xfb
+  8e:   73 20                   jae    0xb0
+  90:   6f                      outs   dx,DWORD PTR ds:[rsi]
+  91:   66 20 74 68 65          data16 and BYTE PTR [rax+rbp*2+0x65],dh
+  96:   20 4d 49                and    BYTE PTR [rbp+0x49],cl
+  99:   54                      push   rsp
+  9a:   20 6c 69 63             and    BYTE PTR [rcx+rbp*2+0x63],ch
+  9e:   65 6e                   outs   dx,BYTE PTR gs:[rsi]
+  a0:   73 65                   jae    0x107
+  a2:   2e 0a 0a                or     cl,BYTE PTR cs:[rdx]
+  a5:   70 6f                   jo     0x116
+  a7:   6f                      outs   dx,DWORD PTR ds:[rsi]
+  a8:   6c                      ins    BYTE PTR es:[rdi],dx
+  a9:   20 3d 20 22 30 31       and    BYTE PTR [rip+0x31302220],bh        # 0x313022cf
+  af:   32 33                   xor    dh,BYTE PTR [rbx]
+  b1:   34 35                   xor    al,0x35
+  b3:   36 37                   ss (bad) 
+  b5:   38 39                   cmp    BYTE PTR [rcx],bh
+  b7:   41                      rex.B
+  b8:   42                      rex.X
+  b9:   43                      rex.XB
+  ba:   44                      rex.R
+  bb:   45                      rex.RB
+  bc:   46                      rex.RX
+  bd:   47                      rex.RXB
+  be:   48                      rex.W
+  bf:   49                      rex.WB
+  c0:   4a                      rex.WX
+  c1:   4b                      rex.WXB
+  c2:   4c                      rex.WR
+  c3:   4d                      rex.WRB
+  c4:   4e                      rex.WRX
+  c5:   4f 50                   rex.WRXB push r8
+  c7:   51                      push   rcx
+  c8:   52                      push   rdx
+  c9:   53                      push   rbx
+  ca:   54                      push   rsp
+  cb:   55                      push   rbp
+  cc:   56                      push   rsi
+  cd:   57                      push   rdi
+  ce:   58                      pop    rax
+  cf:   59                      pop    rcx
+  d0:   5a                      pop    rdx
+  d1:   61                      (bad)  
+  d2:   62 63 64 65 66          (bad)  {k5}
+  d7:   67 68 69 6a 6b 6c       addr32 push 0x6c6b6a69
+  dd:   6d                      ins    DWORD PTR es:[rdi],dx
+  de:   6e                      outs   dx,BYTE PTR ds:[rsi]
+  df:   6f                      outs   dx,DWORD PTR ds:[rsi]
+  e0:   70 71                   jo     0x153
+  e2:   72 73                   jb     0x157
+  e4:   74 75                   je     0x15b
+  e6:   76 77                   jbe    0x15f
+  e8:   78 79                   js     0x163
+  ea:   7a 22                   jp     0x10e
+  ec:   0a 0a                   or     cl,BYTE PTR [rdx]
+  ee:   73 3d                   jae    0x12d
+  f0:   22 22                   and    ah,BYTE PTR [rdx]
+  f2:   0a 66 6f                or     ah,BYTE PTR [rsi+0x6f]
+  f5:   72 20                   jb     0x117
+  f7:   69 20 69 6e 20 70       imul   esp,DWORD PTR [rax],0x70206e69
+  fd:   6f                      outs   dx,DWORD PTR ds:[rsi]
+  fe:   6f                      outs   dx,DWORD PTR ds:[rsi]
+  ff:   6c                      ins    BYTE PTR es:[rdi],dx
+ 100:   3a 0a                   cmp    cl,BYTE PTR [rdx]
+ 102:   20 20                   and    BYTE PTR [rax],ah
+ 104:   20 20                   and    BYTE PTR [rax],ah
+ 106:   66 6f                   outs   dx,WORD PTR ds:[rsi]
+ 108:   72 20                   jb     0x12a
+ 10a:   6a 20                   push   0x20
+ 10c:   69 6e 20 70 6f 6f 6c    imul   ebp,DWORD PTR [rsi+0x20],0x6c6f6f70
+ 113:   3a 0a                   cmp    cl,BYTE PTR [rdx]
+ 115:   20 20                   and    BYTE PTR [rax],ah
+ 117:   20 20                   and    BYTE PTR [rax],ah
+ 119:   20 20                   and    BYTE PTR [rax],ah
+ 11b:   20 20                   and    BYTE PTR [rax],ah
+ 11d:   66 6f                   outs   dx,WORD PTR ds:[rsi]
+ 11f:   72 20                   jb     0x141
+ 121:   68 20 69 6e 20          push   0x206e6920
+ 126:   70 6f                   jo     0x197
+ 128:   6f                      outs   dx,DWORD PTR ds:[rsi]
+ 129:   6c                      ins    BYTE PTR es:[rdi],dx
+ 12a:   3a 0a                   cmp    cl,BYTE PTR [rdx]
+ 12c:   20 20                   and    BYTE PTR [rax],ah
+ 12e:   20 20                   and    BYTE PTR [rax],ah
+ 130:   20 20                   and    BYTE PTR [rax],ah
+ 132:   20 20                   and    BYTE PTR [rax],ah
+ 134:   20 20                   and    BYTE PTR [rax],ah
+ 136:   20 20                   and    BYTE PTR [rax],ah
+ 138:   73 2b                   jae    0x165
+ 13a:   3d 69 2b 6a 2b          cmp    eax,0x2b6a2b69
+ 13f:   68 0a 0a 77 69          push   0x69770a0a
+ 144:   74 68                   je     0x1ae
+ 146:   20 6f 70                and    BYTE PTR [rdi+0x70],ch
+ 149:   65 6e                   outs   dx,BYTE PTR gs:[rsi]
+ 14b:   28 22                   sub    BYTE PTR [rdx],ah
+ 14d:   62                      (bad)  {k5}
+ 14e:   69 6e 22 2c 22 77 2b    imul   ebp,DWORD PTR [rsi+0x22],0x2b77222c
+ 155:   22 29                   and    ch,BYTE PTR [rcx]
+ 157:   20 61 73                and    BYTE PTR [rcx+0x73],ah
+ 15a:   20 66 3a                and    BYTE PTR [rsi+0x3a],ah
+ 15d:   0a 20                   or     ah,BYTE PTR [rax]
+ 15f:   20 20                   and    BYTE PTR [rax],ah
+ 161:   20 66 2e                and    BYTE PTR [rsi+0x2e],ah
+ 164:   77 72                   ja     0x1d8
+ 166:   69                      .byte 0x69
+ 167:   74 65                   je     0x1ce
+ 169:   28 73 29                sub    BYTE PTR [rbx+0x29],dh
+ 16c:   0a                      .byte 0xa

@@ -1,0 +1,3 @@
+0                 string       MZ
+>0x18             use          1
+>>0x19            name         2
