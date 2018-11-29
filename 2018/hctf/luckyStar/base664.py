@@ -1,7 +1,7 @@
 
 n2ch = "".join([
-    "abcdefghijklmnopqrstuvwxyz",
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "abcdefghijklmnopqrstuvwxyz",
     "0123456789+/",
 ])
 ch2n = dict(zip(n2ch, range(len(n2ch))))
