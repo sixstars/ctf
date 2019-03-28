@@ -1,0 +1,150 @@
+diff --git a/config b/config
+index 34c77ea..5a4affd 100644
+--- a/config
++++ b/config
+@@ -119,11 +119,11 @@ WARN= -Wall
+ # debug information. If you only want the shared libraries, you may want to
+ # add -fPIC to MYCFLAGS.
+ #
+-MYCFLAGS= -O2
++MYCFLAGS= -O2 -fPIC
+ #MYCFLAGS= -O3 -fomit-frame-pointer # -fPIC
+ 
+ # Write here any options you may need for your C linker.
+-#MYLDFLAGS=
++MYLDFLAGS= -pie -fPIE
+ 
+ # ------------------------------------------------------------------ librarian
+ 
+diff --git a/src/lib/lbaselib.c b/src/lib/lbaselib.c
+index fb26a54..0c6e558 100644
+--- a/src/lib/lbaselib.c
++++ b/src/lib/lbaselib.c
+@@ -525,14 +525,14 @@ static const luaL_reg base_funcs[] = {
+   {"rawequal", luaB_rawequal},
+   {"rawget", luaB_rawget},
+   {"rawset", luaB_rawset},
+-  {"pcall", luaB_pcall},
+-  {"xpcall", luaB_xpcall},
++  /* {"pcall", luaB_pcall}, */
++  /* {"xpcall", luaB_xpcall}, */
+   {"collectgarbage", luaB_collectgarbage},
+   {"gcinfo", luaB_gcinfo},
+-  {"loadfile", luaB_loadfile},
+-  {"dofile", luaB_dofile},
++  /* {"loadfile", luaB_loadfile}, */
++  /* {"dofile", luaB_dofile}, */
+   {"loadstring", luaB_loadstring},
+-  {"require", luaB_require},
++  /* {"require", luaB_require}, */
+   {NULL, NULL}
+ };
+ 
+diff --git a/src/lib/ldblib.c b/src/lib/ldblib.c
+index 6dc9b64..ff0e74c 100644
+--- a/src/lib/ldblib.c
++++ b/src/lib/ldblib.c
+@@ -78,7 +78,7 @@ static int getinfo (lua_State *L) {
+   }
+   return 1;  /* return table */
+ }
+-    
++
+ 
+ static int getlocal (lua_State *L) {
+   lua_Debug ar;
+@@ -252,7 +252,7 @@ static int errorfb (lua_State *L) {
+     if (ar.currentline > 0)
+       lua_pushfstring(L, "%d:", ar.currentline);
+     switch (*ar.namewhat) {
+-      case 'g':  /* global */ 
++      case 'g':  /* global */
+       case 'l':  /* local */
+       case 'f':  /* field */
+       case 'm':  /* method */
+@@ -276,15 +276,15 @@ static int errorfb (lua_State *L) {
+ 
+ 
+ static const luaL_reg dblib[] = {
+-  {"getlocal", getlocal},
+-  {"getinfo", getinfo},
+-  {"gethook", gethook},
+-  {"getupvalue", getupvalue},
+-  {"sethook", sethook},
+-  {"setlocal", setlocal},
+-  {"setupvalue", setupvalue},
+-  {"debug", debug},
+-  {"traceback", errorfb},
++  /* {"getlocal", getlocal}, */
++  /* {"getinfo", getinfo}, */
++  /* {"gethook", gethook}, */
++  /* {"getupvalue", getupvalue}, */
++  /* {"sethook", sethook}, */
++  /* {"setlocal", setlocal}, */
++  /* {"setupvalue", setupvalue}, */
++  /* {"debug", debug}, */
++  /* {"traceback", errorfb}, */
+   {NULL, NULL}
+ };
+ 
+diff --git a/src/lib/liolib.c b/src/lib/liolib.c
+index bcadcdf..2837877 100644
+--- a/src/lib/liolib.c
++++ b/src/lib/liolib.c
+@@ -502,29 +502,29 @@ static int f_flush (lua_State *L) {
+ 
+ 
+ static const luaL_reg iolib[] = {
+-  {"input", io_input},
+-  {"output", io_output},
+-  {"lines", io_lines},
+-  {"close", io_close},
+-  {"flush", io_flush},
+-  {"open", io_open},
+-  {"popen", io_popen},
+-  {"read", io_read},
+-  {"tmpfile", io_tmpfile},
+-  {"type", io_type},
+-  {"write", io_write},
++  /* {"input", io_input}, */
++  /* {"output", io_output}, */
++  /* {"lines", io_lines}, */
++  /* {"close", io_close}, */
++  /* {"flush", io_flush}, */
++  /* {"open", io_open}, */
++  /* {"popen", io_popen}, */
++  /* {"read", io_read}, */
++  /* {"tmpfile", io_tmpfile}, */
++  /* {"type", io_type}, */
++  /* {"write", io_write}, */
+   {NULL, NULL}
+ };
+ 
+ 
+ static const luaL_reg flib[] = {
+-  {"flush", f_flush},
+-  {"read", f_read},
+-  {"lines", f_lines},
+-  {"seek", f_seek},
+-  {"write", f_write},
+-  {"close", io_close},
+-  {"__gc", io_gc},
++  /* {"flush", f_flush}, */
++  /* {"read", f_read}, */
++  /* {"lines", f_lines}, */
++  /* {"seek", f_seek}, */
++  /* {"write", f_write}, */
++  /* {"close", io_close}, */
++  /* {"__gc", io_gc}, */
+   {"__tostring", io_tostring},
+   {NULL, NULL}
+ };
+@@ -549,7 +549,7 @@ static void createmeta (lua_State *L) {
+ */
+ 
+ static int io_execute (lua_State *L) {
+-  lua_pushnumber(L, system(luaL_checkstring(L, 1)));
++  /* lua_pushnumber(L, system(luaL_checkstring(L, 1))); */
+   return 1;
+ }
+ 
