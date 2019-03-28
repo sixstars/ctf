@@ -45,50 +45,50 @@ Aes.applyTyTables = function(state) {
 
 ```Lua
 function ()
-			slot0.I = function (slot0, slot1)
-				slot2, slot3, slot4, slot5, slot6 = nil
-				slot6 = 0
+    slot0.I = function (slot0, slot1)
+        slot2, slot3, slot4, slot5, slot6 = nil
+        slot6 = 0
 
-				while slot6 < 4 do
-					_seq({
-						function ()
-							return _arr({
-								[0] = 0,			0,			0,			0
-							}, 4)
-						end(),	function ()
-							return 0
-						end()
-					})
+        while slot6 < 4 do
+            _seq({
+                function ()
+                    return _arr({
+                        [0] = 0,			0,			0,			0
+                    }, 4)
+                end(),	function ()
+                    return 0
+                end()
+            })
 
-					while slot2 < 4 do
-						_seq({
-							function ()
-								return slot1.A[slot2]
-							end(),		function ()
-								return slot1[slot2][slot3]
-							end(),		function ()
-								return slot1:S(slot1.S, slot2[])
-							end()
-						})
+            while slot2 < 4 do
+                _seq({
+                    function ()
+                        return slot1.A[slot2]
+                    end(),		function ()
+                        return slot1[slot2][slot3]
+                    end(),		function ()
+                        return slot1:S(slot1.S, slot2[])
+                    end()
+                })
 
-						slot2 = slot2 + 1
-					end
+                slot2 = slot2 + 1
+            end
 
-					slot2 = 0
+            slot2 = 0
 
-					while slot2 < 4 do
-						slot1[slot2][slot6] = slot5[slot2]
-						slot2 = slot2 + 1
-					end
+            while slot2 < 4 do
+                slot1[slot2][slot6] = slot5[slot2]
+                slot2 = slot2 + 1
+            end
 
-					slot6 = slot6 + 1
-				end
+            slot6 = slot6 + 1
+        end
 
-				return slot1
-			end
+        return slot1
+    end
 
-			return slot0.I
-		end()
+    return slot0.I
+end()
 ```
 
 Yes! This JS repo is the source code of this challenge!
