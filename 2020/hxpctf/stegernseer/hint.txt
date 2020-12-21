@@ -1,0 +1,1 @@
+[23:13:37] <@hlt_> stegernseer: Use overflow in `reverse` operation to overwrite next pointer, then use CVE-2019-1010025 to brute-force ~8 bits of ASLR to get into the thread arena, pivot through the arena list into the main_arena and then overwrite xsputn in stdout with popen
